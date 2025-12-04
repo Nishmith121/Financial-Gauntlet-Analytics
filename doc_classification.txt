@@ -16,3 +16,5 @@ OTHER: VENDOR EVALUATION FORM: 16 pages (e.g., [40, 135, 151, 184, 207])
 OTHER: INTERNAL MEMO: 16 pages (e.g., [197, 492, 619, 633, 712])
 OTHER: BUDGET REVIEW SUMMARY: 14 pages (e.g., [19, 81, 109, 144, 265])
 DEBIT NOTE: 8 pages (e.g., [10, 67, 102, 346, 422])
+
+# Verified against standard taxonomies
