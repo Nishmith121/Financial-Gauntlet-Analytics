@@ -8,3 +8,4 @@ An intelligent, hybrid pipeline designed to ingest unstructured system logs and 
 *   **Hybrid Extraction Engine:**
     *   **Heuristic/Regex Parsing:** Fast and precise extraction for standard formats.
     *   **Vision-Language Model (Gemini 2.5 Flash):** Fallback extraction for complex documents.
+*   **Deterministic Validation (The Gauntlet):** A robust 20-rule anomaly detection pipeline that validates chronologies, math, and tax calculations.
