@@ -1,0 +1,75 @@
+﻿=== INVOICE PAGE 7 (full) ===
+TAX INVOICE
+Invoice No: INV-2025-00097
+Date: 05/12/2025
+PO Reference: PO-2025-00024
+VENDOR DETAILS
+Name: Dabur India Ltd
+GSTIN: 27REGAG5326F2ZF
+PAN: REGAG5326F
+Address: Noida Sector 63, Jaipur, Maharashtra - 437198
+BILL TO
+Name: HyperAPI Technologies Pvt Ltd
+GSTIN: 36AADCH1234M1Z5
+Address: 4th Floor, Tower A, Mindspace IT Park, Hyderabad, Telangana - 500081
+LINE ITEMS
+# Description HSN Qty Unit Rate Amount
+1 ERP Implementation - Module Configuratio 997212 31.00 Units n10,273.14 n3,18,467.34
+2 Printing & Stationery Supply 48201010 31.00 Pcs n5,060.73 n1,56,882.63
+3 API Integration Development 998311 31.00 Hrs n1,790.28 n55,498.68
+4 Database Administration - Annual Contrac 84714110 31.00 Pcs n14,555.83 n4,51,230.73
+For any queries regarding this document, please contact the accounts department at accounts@hyperapi.com or call +91-40-66789000 during business hours (Monday to Friday, 9:00 AM
+to 6:00 PM IST). Authorized signatory details are available upon request. This is an electronically generated document valid without signature.
+The recipient is advised to retain this document for tax filing purposes. GST Input Tax Credit can be claimed based on this tax invoice as per the provisions of the CGST Act and SGST
+Act. Supply is made under reverse charge mechanism where applicable as per the notification issued by the Government of India.
+Place of supply is determined as per Section 10 of the Integrated Goods and Services Tax Act, 2017 (IGST Act). HSN/SAC codes mentioned in this document are as per the latest GST
+tariff notification. The classification of goods and services is based on the Harmonized System of Nomenclature adopted by India.
+Disclaimer: The information contained in this document is confidential and intended solely for the addressee. If you have received this document in error, please notify the sender
+immediately and destroy all copies. Any unauthorized use, disclosure, or distribution of this document is strictly prohibited.
+This document forms part of the accounts payable processing bundle maintained by HyperAPI Technologies Private Limited for the financial year 2025-2026. All amounts are stated in
+Indian Rupees (INR) unless otherwise specified. Foreign currency transactions are converted at the prevailing exchange rate on the date of the transaction as published by the Reserve
+Bank of India.
+Internal Reference: This document has been processed through the automated accounts payable system and verified against the purchase order database, vendor master file, and goods
+receipt records. Three-way matching has been performed where applicable. Any exceptions have been flagged for manual review by the accounts payable team and the relevant
+approving authority.
+Compliance Note: This transaction is compliant with the Foreign Exchange Management Act (FEMA), 1999, the Prevention of Money Laundering Act (PMLA), 2002, and the Income Tax
+Act, 1961 including all applicable TDS provisions under Section 194C, 194J, and 194H as may be applicable to this transaction.
+Page 7 INV-2025-00097
+
+=== INVOICE PAGE 8 (full) ===
+TAX INVOICE (Continued)
+Invoice No: INV-2025-00097
+Date: 05/12/2025
+PO Reference: PO-2025-00024
+LINE ITEMS
+# Description HSN Qty Unit Rate Amount
+6 Catering Services - Corporate Events 998412 31.00 Hrs n1,181.27 n36,619.37
+7 Courier & Logistics Services 999210 31.00 Hrs n3,694.69 n1,14,535.39
+Subtotal: n11,33,234.14
+CGST: n86,976.41
+SGST: n86,976.41
+GRAND TOTAL: n13,07,186.96
+BANK DETAILS FOR PAYMENT
+Bank: Union Bank of India
+IFSC: UBIN07846634
+Account: 1806663906
+Terms and Conditions: 1. Payment terms are Net 30 days from date of invoice. 2. Goods once sold will not be taken back. 3. Our liability is limited to the invoice amount. 4. This document
+is subject to the Indian Contract Act, 1872.
+The recipient is advised to retain this document for tax filing purposes. GST Input Tax Credit can be claimed based on this tax invoice as per the provisions of the CGST Act and SGST
+Act. Supply is made under reverse charge mechanism where applicable as per the notification issued by the Government of India.
+Place of supply is determined as per Section 10 of the Integrated Goods and Services Tax Act, 2017 (IGST Act). HSN/SAC codes mentioned in this document are as per the latest GST
+tariff notification. The classification of goods and services is based on the Harmonized System of Nomenclature adopted by India.
+Disclaimer: The information contained in this document is confidential and intended solely for the addressee. If you have received this document in error, please notify the sender
+immediately and destroy all copies. Any unauthorized use, disclosure, or distribution of this document is strictly prohibited.
+This document forms part of the accounts payable processing bundle maintained by HyperAPI Technologies Private Limited for the financial year 2025-2026. All amounts are stated in
+Indian Rupees (INR) unless otherwise specified. Foreign currency transactions are converted at the prevailing exchange rate on the date of the transaction as published by the Reserve
+Bank of India.
+Internal Reference: This document has been processed through the automated accounts payable system and verified against the purchase order database, vendor master file, and goods
+receipt records. Three-way matching has been performed where applicable. Any exceptions have been flagged for manual review by the accounts payable team and the relevant
+approving authority.
+Compliance Note: This transaction is compliant with the Foreign Exchange Management Act (FEMA), 1999, the Prevention of Money Laundering Act (PMLA), 2002, and the Income Tax
+Act, 1961 including all applicable TDS provisions under Section 194C, 194J, and 194H as may be applicable to this transaction.
+Audit Trail: Document created on the date mentioned above. Processing status can be tracked using the document reference number through the vendor portal at
+https://vendorportal.hyperapi.com. For payment status enquiries, vendors may also contact the accounts payable helpdesk at ap-helpdesk@hyperapi.com.
+This document is computer generated and does not require a physical signature. Payment is due within 30 days of the invoice date. Late payments will attract interest at 1.5% per month
+Page 8 INV-2025-00097
