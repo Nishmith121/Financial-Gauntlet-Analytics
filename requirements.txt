@@ -3,3 +3,5 @@ pydantic
 pdfplumber
 pytesseract
 Pillow
+matplotlib
+seaborn
