@@ -1,0 +1,45 @@
+=== PO PAGE 15 ===
+PURCHASE ORDER
+PO Number: PO-2025-00015
+Date: 04/02/2025
+Delivery Date: 12/03/2025
+Payment Terms: Net 60 days
+VENDOR
+Name: KPIT Technologies Ltd
+GSTIN: 36PXZPV4835K1Z1
+SHIP TO
+Address: HyperAPI Technologies Pvt Ltd, 4th Floor, Tower A, Mindspace IT Park, Hyderabad, Telangana - 500081
+ORDER ITEMS
+# Description HSN Qty Unit Rate Amount
+1 ERP Implementation - Module Configuratio 996311 89 Days n4,425.52 n3,93,871.28
+2 Hardware Procurement - Laptops 85044090 91 Hrs n17,581.68 n15,99,932.88
+3 UI/UX Design Services - Mobile App 996331 43 Days n12,917.69 n5,55,460.67
+4 Software License - Enterprise Edition 94036000 56 Lots n17,609.15 n9,86,112.40
+5 Technical Training - Batch 1 998521 53 Hrs n7,653.98 n4,05,660.94
+Subtotal: n39,41,038.17
+GST: n8,72,149.23
+TOTAL: n48,13,187.40
+Authorized Signatory: ________________ Date: ________________
+This document is computer generated and does not require a physical signature. Payment is due within 30 days of the invoice date. Late payments will attract interest at 1.5% per month
+on the outstanding amount. All disputes are subject to the exclusive jurisdiction of courts in Mumbai, Maharashtra, India.
+Terms and Conditions: (1) Payment terms are Net 30 days from date of invoice unless otherwise agreed in writing. (2) Goods once sold will not be taken back or exchanged under any
+circumstances. (3) Our liability is limited to the invoice amount mentioned above. (4) This document is subject to the Indian Contract Act, 1872 and all amendments thereof.
+E&OE - Errors and Omissions Excepted. This is a tax invoice under Section 31 of the Central Goods and Services Tax Act, 2017 read with Rule 46 of the CGST Rules, 2017. Subject to
+terms and conditions agreed upon in the master service agreement dated as referenced in the purchase order above.
+Certified that the particulars given above are true and correct and the amount indicated represents the price actually charged for the goods and services described herein. All applicable
+taxes have been charged as per the prevailing GST rates notified by the Government of India under the relevant notifications.
+Note: Kindly verify all details before processing this payment. Any discrepancy should be reported to the accounts department within 7 working days of receipt of this document. Bank
+details for remittance are provided in the payment section above. Please quote the document reference number in all correspondence and payment references for reconciliation purposes.
+This invoice has been prepared in accordance with the applicable Indian Accounting Standards (Ind AS) as notified by the Ministry of Corporate Affairs. The company reserves the right to
+charge interest at the rate of 18% per annum on overdue amounts from the due date until the date of actual payment.
+Delivery terms are as per the purchase order referenced in this document. Quality of goods and services is as per the agreed specifications and standards mentioned in the original
+purchase order or master service agreement. Warranty terms apply as specified in the agreement executed between the parties.
+Page 15 PO-2025-00015
+
+--- Tables ---
+['#', 'Description', 'HSN', 'Qty', 'Unit', 'Rate', 'Amount']
+['1', 'ERP Implementation - Module Configuratio', '996311', '89', 'Days', 'n4,425.52', 'n3,93,871.28']
+['2', 'Hardware Procurement - Laptops', '85044090', '91', 'Hrs', 'n17,581.68', 'n15,99,932.88']
+['3', 'UI/UX Design Services - Mobile App', '996331', '43', 'Days', 'n12,917.69', 'n5,55,460.67']
+['4', 'Software License - Enterprise Edition', '94036000', '56', 'Lots', 'n17,609.15', 'n9,86,112.40']
+...
