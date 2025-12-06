@@ -5,3 +5,5 @@ pytesseract
 Pillow
 matplotlib
 seaborn
+fpdf2
+google-genai
