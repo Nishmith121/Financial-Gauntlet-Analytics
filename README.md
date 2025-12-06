@@ -9,3 +9,11 @@ An intelligent, hybrid pipeline designed to ingest unstructured system logs and 
     *   **Heuristic/Regex Parsing:** Fast and precise extraction for standard formats.
     *   **Vision-Language Model (Gemini 2.5 Flash):** Fallback extraction for complex documents.
 *   **Deterministic Validation (The Gauntlet):** A robust 20-rule anomaly detection pipeline that validates chronologies, math, and tax calculations.
+
+## 🛠️ Technology Stack
+
+*   **Frontend/App Framework:** Streamlit
+*   **AI/LLM:** Google Gemini API (Gemini 2.5 Flash)
+*   **Document Parsing:** pdfplumber, pytesseract, Pillow
+*   **Data Validation:** Pydantic
+*   **Visualization:** Matplotlib, Seaborn
