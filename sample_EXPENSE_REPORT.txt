@@ -1,0 +1,45 @@
+=== EXPENSE_REPORT PAGE 897 ===
+EXPENSE REPORT
+Report ID: EXP-2025-00047
+Date: 26/12/2025
+Employee: Meera Nair
+Employee ID: EMP-1047
+Department: Product
+Purpose: Annual Review
+City: Mumbai
+EXPENSE ENTRIES
+# Date Category Description City Amount
+1 12/12/2025 Software License Software License - Pune Pune n6,444.60
+2 18/12/2025 Local Conveyance Local Conveyance - Pune Pune n4,627.17
+3 19/12/2025 Parking Parking - Kolkata Kolkata n13,750.83
+4 13/12/2025 Office Supplies Office Supplies - Mumbai Mumbai n7,605.65
+5 05/12/2025 Meals & Entertainm Meals & Entertainment - Kolk Kolkata n7,921.46
+6 04/01/2025 Hotel Accommodatio Sheraton Ahmedabad - 2 night Ahmedabad n9,433.34
+TOTAL CLAIMED: n49,783.05
+APPROVAL
+Status: Pending
+Approver: Sneha Gupta
+Employee Signature: ________________ Manager Signature: ________________
+Internal Reference: This document has been processed through the automated accounts payable system and verified against the purchase order database, vendor master file, and goods
+receipt records. Three-way matching has been performed where applicable. Any exceptions have been flagged for manual review by the accounts payable team and the relevant
+approving authority.
+Compliance Note: This transaction is compliant with the Foreign Exchange Management Act (FEMA), 1999, the Prevention of Money Laundering Act (PMLA), 2002, and the Income Tax
+Act, 1961 including all applicable TDS provisions under Section 194C, 194J, and 194H as may be applicable to this transaction.
+Audit Trail: Document created on the date mentioned above. Processing status can be tracked using the document reference number through the vendor portal at
+https://vendorportal.hyperapi.com. For payment status enquiries, vendors may also contact the accounts payable helpdesk at ap-helpdesk@hyperapi.com.
+This document is computer generated and does not require a physical signature. Payment is due within 30 days of the invoice date. Late payments will attract interest at 1.5% per month
+on the outstanding amount. All disputes are subject to the exclusive jurisdiction of courts in Mumbai, Maharashtra, India.
+Terms and Conditions: (1) Payment terms are Net 30 days from date of invoice unless otherwise agreed in writing. (2) Goods once sold will not be taken back or exchanged under any
+circumstances. (3) Our liability is limited to the invoice amount mentioned above. (4) This document is subject to the Indian Contract Act, 1872 and all amendments thereof.
+E&OE - Errors and Omissions Excepted. This is a tax invoice under Section 31 of the Central Goods and Services Tax Act, 2017 read with Rule 46 of the CGST Rules, 2017. Subject to
+terms and conditions agreed upon in the master service agreement dated as referenced in the purchase order above.
+Certified that the particulars given above are true and correct and the amount indicated represents the price actually charged for the goods and services described herein. All applicable
+Page 897 EXP-2025-00047
+
+--- Tables ---
+['#', 'Date', 'Category', 'Description', 'City', 'Amount']
+['1', '12/12/2025', 'Software License', 'Software License - Pune', 'Pune', 'n6,444.60']
+['2', '18/12/2025', 'Local Conveyance', 'Local Conveyance - Pune', 'Pune', 'n4,627.17']
+['3', '19/12/2025', 'Parking', 'Parking - Kolkata', 'Kolkata', 'n13,750.83']
+['4', '13/12/2025', 'Office Supplies', 'Office Supplies - Mumbai', 'Mumbai', 'n7,605.65']
+...
