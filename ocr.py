@@ -38,3 +38,6 @@ class FinancialDocument(BaseModel):
     raw_text: str = Field(description="The full extracted text of the document")
     records: list[LineItem] = Field(description="Structured records extracted from the document.")
 
+def extract_financial_data(file):
+
+# Client configured via GEMINI_API_KEY environment variable
