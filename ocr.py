@@ -30,3 +30,11 @@ class LineItem(BaseModel):
     deductible: float | None = None
     covered_amount: float | None = None
 
+class FinancialDocument(BaseModel):
+    extraction_reasoning: str = Field(description="Overall reasoning for document classification and data location.")
+    vendor_or_entity_name: str | None = Field(description="The name of the vendor, business, or person on the document. Return 'N/A' if missing.")
+    grand_total: float | None = Field(description="The final total amount of the document.")
+    document_type: DocType = Field(description="Must be one of the explicitly defined document types.", default=DocType.UNKNOWN)
+    raw_text: str = Field(description="The full extracted text of the document")
+    records: list[LineItem] = Field(description="Structured records extracted from the document.")
+
