@@ -17,3 +17,4 @@ An intelligent, hybrid pipeline designed to ingest unstructured system logs and 
 *   **Document Parsing:** pdfplumber, pytesseract, Pillow
 *   **Data Validation:** Pydantic
 *   **Visualization:** Matplotlib, Seaborn
+*   **Human-in-the-Loop (HITL) UI:** An interactive interface to review, edit, and re-validate extracted data.
