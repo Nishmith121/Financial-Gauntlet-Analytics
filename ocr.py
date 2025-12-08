@@ -41,3 +41,4 @@ class FinancialDocument(BaseModel):
 def extract_financial_data(file):
 
 # Client configured via GEMINI_API_KEY environment variable
+# Schema supports invoice, tax_1040, and insurance claim lines
