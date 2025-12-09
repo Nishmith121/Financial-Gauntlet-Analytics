@@ -39,6 +39,8 @@ class FinancialDocument(BaseModel):
     records: list[LineItem] = Field(description="Structured records extracted from the document.")
 
 def extract_financial_data(file):
-
-# Client configured via GEMINI_API_KEY environment variable
-# Schema supports invoice, tax_1040, and insurance claim lines
+    filename = file.name.lower()
+    mime_type, _ = mimetypes.guess_type(filename)
+    if not mime_type:
+        mime_type = "application/pdf" if filename.endswith(".pdf") else "text/plain"
+        
