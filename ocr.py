@@ -47,3 +47,10 @@ def extract_financial_data(file):
     file_bytes = file.read()
     part = types.Part.from_bytes(data=file_bytes, mime_type=mime_type)
     
+    system_instruction = (
+        "You are an expert Document Intelligence API. "
+        "Extract all structured financial data linearly from the document. "
+        "Before extracting the final numerical values, use the 'extraction_reasoning' field to explain your step-by-step logic. "
+        "Locate the item, identify the raw string, explain any discounts applied, and state the final calculation. "
+        "Classify the document exactly as 'invoice', 'tax_1040', 'insurance_claim', or 'logs'. "
+        "Extract the raw text. "
