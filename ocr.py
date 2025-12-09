@@ -44,3 +44,6 @@ def extract_financial_data(file):
     if not mime_type:
         mime_type = "application/pdf" if filename.endswith(".pdf") else "text/plain"
         
+    file_bytes = file.read()
+    part = types.Part.from_bytes(data=file_bytes, mime_type=mime_type)
+    
