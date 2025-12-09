@@ -18,3 +18,4 @@ An intelligent, hybrid pipeline designed to ingest unstructured system logs and 
 *   **Data Validation:** Pydantic
 *   **Visualization:** Matplotlib, Seaborn
 *   **Human-in-the-Loop (HITL) UI:** An interactive interface to review, edit, and re-validate extracted data.
+*   **AI Synthesis:** Generates executive summaries, trend analysis, and actionable recommendations.
