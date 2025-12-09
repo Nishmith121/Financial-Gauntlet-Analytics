@@ -54,3 +54,8 @@ def extract_financial_data(file):
         "Locate the item, identify the raw string, explain any discounts applied, and state the final calculation. "
         "Classify the document exactly as 'invoice', 'tax_1040', 'insurance_claim', or 'logs'. "
         "Extract the raw text. "
+        "For 'records', construct a list of JSON objects representing table rows or logical line items. "
+        "For invoices, include description, qty, price, discount, and total. "
+        "For tax_1040, include wages, interest, dividends, and total_income. "
+        "For insurance_claim, include claim_amount, deductible, and covered_amount."
+    )
