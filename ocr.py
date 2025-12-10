@@ -88,3 +88,8 @@ def extract_financial_data(file):
             "extraction_reasoning": parsed.get("extraction_reasoning", "")
         }
         
+        # High-risk warning tag mapping for the UI
+        if doc_type_val == DocType.UNKNOWN.value:
+             result["high_risk_warning"] = "CRITICAL: AI failed to classify this document. Manual Review required. Pipeline will skip math validation."
+
+        return result
