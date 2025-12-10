@@ -59,3 +59,17 @@ def extract_financial_data(file):
         "For tax_1040, include wages, interest, dividends, and total_income. "
         "For insurance_claim, include claim_amount, deductible, and covered_amount."
     )
+    
+    try:
+        response = client.models.generate_content(
+            model='gemini-2.5-flash',
+            contents=[part],
+            config=types.GenerateContentConfig(
+                system_instruction=system_instruction,
+                response_mime_type="application/json",
+                response_schema=FinancialDocument,
+                temperature=0.1,
+            ),
+        )
+        
+        parsed = json.loads(response.text)
