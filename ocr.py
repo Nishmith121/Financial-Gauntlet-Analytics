@@ -99,4 +99,3 @@ def extract_financial_data(file):
             "text": str(e),
             "data": []
         }
-# Verified against standard gemini-2.5-flash response format
