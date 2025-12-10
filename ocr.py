@@ -73,3 +73,18 @@ def extract_financial_data(file):
         )
         
         parsed = json.loads(response.text)
+        
+        doc_type_val = parsed.get("document_type", "unknown")
+        # Ensure it falls back safely if the model hallucinated something outside the Enum
+        if doc_type_val not in [e.value for e in DocType]:
+            doc_type_val = DocType.UNKNOWN.value
+
+        result = {
+            "type": doc_type_val,
+            "vendor_or_entity_name": parsed.get("vendor_or_entity_name", "N/A"),
+            "grand_total": parsed.get("grand_total", 0.0),
+            "text": parsed.get("raw_text", ""),
+            "data": parsed.get("records", []),
+            "extraction_reasoning": parsed.get("extraction_reasoning", "")
+        }
+        
