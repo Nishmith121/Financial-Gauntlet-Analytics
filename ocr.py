@@ -93,3 +93,9 @@ def extract_financial_data(file):
              result["high_risk_warning"] = "CRITICAL: AI failed to classify this document. Manual Review required. Pipeline will skip math validation."
 
         return result
+    except Exception as e:
+        return {
+            "type": "error",
+            "text": str(e),
+            "data": []
+        }
