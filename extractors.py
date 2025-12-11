@@ -28,3 +28,23 @@ def _parse_vendor_master(pdf):
                     continue
                 
                 try:
+                    name = row[1].strip()
+                    gstin = row[2].strip() if len(row) > 2 and row[2] else ""
+                    state = row[3].strip() if len(row) > 3 and row[3] else ""
+                    bank = row[4].strip() if len(row) > 4 and row[4] else ""
+                    ifsc = row[5].strip() if len(row) > 5 and row[5] else ""
+                    if len(row) == 5:
+                        ifsc = row[4].strip()
+                        bank = "" # Guessing Bank column might be merged or missing in some rows, let's just grab what we can. 
+                        # Actually the table is: # | Vendor Name | GSTIN | State | Bank | IFSC
+                except IndexError:
+                    continue
+                
+                # Re-check based on sample: ['1', 'Tata Consultancy Services Ltd', '27DNNPH8645X2Z2', 'Maharashtra', 'HDFC Bank', 'HDFC08433393']
+                # Sometimes headers might not be parsed perfectly.
+                if len(row) >= 6:
+                    vendors[name] = {
+                        "name": name,
+                        "gstin": row[2],
+                        "state": row[3],
+                        "bank": row[4],
