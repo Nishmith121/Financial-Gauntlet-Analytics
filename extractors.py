@@ -68,3 +68,28 @@ def extract_all(pdf_path):
         data = {
             "vendors": _parse_vendor_master(pdf),
             "invoices": {},
+            "pos": {},
+            "bank_statements": {},
+            "expense_reports": {},
+            "credit_notes": {},
+            "debit_notes": {}
+        }
+        
+        current_invoice = None
+        
+        for i, page in enumerate(pdf.pages[4:], start=4):
+            text = page.extract_text() or ""
+            if not text.strip(): continue
+            first_line = text.strip().split('\n')[0].strip()
+            
+            # --- TAX INVOICE ---
+            if 'TAX INVOICE' in first_line:
+                if '(Continued)' not in first_line:
+                    # New invoice
+                    inv = {"page": i+1, "items": [], "subtotal": 0, "cgst": 0, "sgst": 0, "grand_total": 0, "po_ref": None, "vendor_name": None, "vendor_dtl": {}, "bill_to": {}, "date": None, "ifsc": None}
+                    
+                    # Regex extractions
+                    doc_no = re.search(r'Invoice No:\s*(INV-\d{4}-\d+)', text)
+                    if doc_no: inv["invoice_no"] = doc_no.group(1)
+                    else: continue
+                    
