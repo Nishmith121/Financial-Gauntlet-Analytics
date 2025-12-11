@@ -48,3 +48,23 @@ def _parse_vendor_master(pdf):
                         "gstin": row[2],
                         "state": row[3],
                         "bank": row[4],
+                        "ifsc": row[5]
+                    }
+                elif len(row) == 5: # If bank/ifsc merged
+                    parts = row[4].split()
+                    ifsc = parts[-1] if parts else ""
+                    vendors[name] = {"name": name, "gstin": row[2], "state": row[3], "ifsc": ifsc}
+    return vendors
+
+def extract_all(pdf_path):
+    cache_file = "parsed_data_cache.json"
+    if os.path.exists(cache_file):
+        print("Loading from cache...")
+        with open(cache_file, 'r', encoding='utf-8') as f:
+            return json.load(f)
+            
+    print("Starting extraction...")
+    with pdfplumber.open(pdf_path) as pdf:
+        data = {
+            "vendors": _parse_vendor_master(pdf),
+            "invoices": {},
