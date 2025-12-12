@@ -163,3 +163,23 @@ def extract_all(pdf_path):
                 if v_name: po["vendor_name"] = v_name.group(1).strip()
                 
                 tables = page.extract_tables()
+                if tables:
+                    for t in tables:
+                        for row in t:
+                            if not row or row[0] == '#' or 'Description' in str(row[1]): continue
+                            if len(row) >= 7 and str(row[0]).isdigit():
+                                po["items"].append({
+                                    "desc": row[1],
+                                    "qty": clean_amount(row[3]),
+                                    "rate": clean_amount(row[5]),
+                                    "amount": clean_amount(row[6])
+                                })
+                                
+                subt = re.search(r'Subtotal:\s*n([\d,.]+)', text)
+                if subt: po["subtotal"] = clean_amount(subt.group(1))
+                gt = re.search(r'TOTAL:\s*n([\d,.]+)', text)
+                if gt: po["total"] = clean_amount(gt.group(1))
+                
+                data["pos"][po["po_no"]] = po
+                
+            # --- BANK STATEMENT ---
