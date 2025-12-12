@@ -183,3 +183,5 @@ def extract_all(pdf_path):
                 data["pos"][po["po_no"]] = po
                 
             # --- BANK STATEMENT ---
+
+# Regex patterns validated on sample invoices
