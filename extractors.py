@@ -183,5 +183,13 @@ def extract_all(pdf_path):
                 data["pos"][po["po_no"]] = po
                 
             # --- BANK STATEMENT ---
-
-# Regex patterns validated on sample invoices
+            elif 'BANK STATEMENT' in first_line:
+                bs = {"page": i+1, "transactions": [], "opening_balance": 0}
+                doc_no = re.search(r'Statement ID:\s*(BS-\d{4}-\d+)', text)
+                if doc_no: bs["stmt_id"] = doc_no.group(1)
+                else: continue
+                
+                ob = re.search(r'Opening Balance:\s*n([\d,.]+)', text)
+                if ob: bs["opening_balance"] = clean_amount(ob.group(1))
+                
+                tables = page.extract_tables()
