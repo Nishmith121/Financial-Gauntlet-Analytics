@@ -93,3 +93,28 @@ def extract_all(pdf_path):
                     if doc_no: inv["invoice_no"] = doc_no.group(1)
                     else: continue
                     
+                    po_ref = re.search(r'PO Reference:\s*(PO-\d{4}-\d+)', text)
+                    if po_ref: inv["po_ref"] = po_ref.group(1)
+                    
+                    date_m = re.search(r'Date:\s*([\d/]+)', text)
+                    if date_m: inv["date"] = date_m.group(1)
+                    
+                    # Vendor details 
+                    v_name = re.search(r'Name:\s*(.*?)\n', text[text.find('VENDOR DETAILS'):text.find('BILL TO')])
+                    if v_name: inv["vendor_name"] = v_name.group(1).strip()
+                    
+                    v_gstin = re.search(r'GSTIN:\s*([A-Z0-9]+)', text[text.find('VENDOR DETAILS'):text.find('BILL TO')])
+                    if v_gstin: inv["vendor_dtl"]["gstin"] = v_gstin.group(1).strip()
+                    
+                    v_addr = re.search(r'Address:\s*(.*?)\n', text[text.find('VENDOR DETAILS'):text.find('BILL TO')])
+                    if v_addr: inv["vendor_dtl"]["address"] = v_addr.group(1).strip()
+                    
+                    ifsc = re.search(r'IFSC:\s*([A-Z0-9]+)', text[text.find('BANK DETAILS'):] if 'BANK DETAILS' in text else text)
+                    if ifsc: inv["ifsc"] = ifsc.group(1).strip()
+                    
+                    current_invoice = inv
+                    data["invoices"][inv["invoice_no"]] = current_invoice
+                else:
+                    # Continuation
+                    doc_no = re.search(r'Invoice No:\s*(INV-\d{4}-\d+)', text)
+                    if doc_no and doc_no.group(1) in data["invoices"]:
