@@ -118,3 +118,28 @@ def extract_all(pdf_path):
                     # Continuation
                     doc_no = re.search(r'Invoice No:\s*(INV-\d{4}-\d+)', text)
                     if doc_no and doc_no.group(1) in data["invoices"]:
+                        current_invoice = data["invoices"][doc_no.group(1)]
+                        # Get IFSC if on page 2
+                        ifsc = re.search(r'IFSC:\s*([A-Z0-9]+)', text[text.find('BANK DETAILS'):] if 'BANK DETAILS' in text else text)
+                        if ifsc: current_invoice["ifsc"] = ifsc.group(1).strip()
+                
+                # Tables
+                tables = page.extract_tables()
+                if tables:
+                    for t in tables:
+                        for row in t:
+                            if not row or row[0] == '#' or 'Description' in str(row[1]): continue
+                            if len(row) >= 7 and str(row[0]).isdigit():
+                                current_invoice["items"].append({
+                                    "desc": row[1],
+                                    "hsn": row[2],
+                                    "qty": clean_amount(row[3]),
+                                    "unit": row[4],
+                                    "rate": clean_amount(row[5]),
+                                    "amount": clean_amount(row[6])
+                                })
+                
+                # Totals
+                subt = re.search(r'Subtotal:\s*n([\d,.]+)', text)
+                if subt: current_invoice["subtotal"] = clean_amount(subt.group(1))
+                cgst = re.search(r'CGST:\s*n([\d,.]+)', text)
