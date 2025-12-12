@@ -143,3 +143,23 @@ def extract_all(pdf_path):
                 subt = re.search(r'Subtotal:\s*n([\d,.]+)', text)
                 if subt: current_invoice["subtotal"] = clean_amount(subt.group(1))
                 cgst = re.search(r'CGST:\s*n([\d,.]+)', text)
+                if cgst: current_invoice["cgst"] = clean_amount(cgst.group(1))
+                sgst = re.search(r'SGST:\s*n([\d,.]+)', text)
+                if sgst: current_invoice["sgst"] = clean_amount(sgst.group(1))
+                gt = re.search(r'GRAND TOTAL:\s*n([\d,.]+)', text)
+                if gt: current_invoice["grand_total"] = clean_amount(gt.group(1))
+            
+            # --- PURCHASE ORDER ---
+            elif 'PURCHASE ORDER' in first_line:
+                po = {"page": i+1, "items": [], "subtotal": 0, "gst": 0, "total": 0, "vendor_name": None}
+                doc_no = re.search(r'PO Number:\s*(PO-\d{4}-\d+)', text)
+                if doc_no: po["po_no"] = doc_no.group(1)
+                else: continue
+                
+                date_m = re.search(r'Date:\s*([\d/]+)', text)
+                if date_m: po["date"] = date_m.group(1)
+                
+                v_name = re.search(r'Name:\s*(.*?)\n', text[text.find('VENDOR'):text.find('SHIP TO')])
+                if v_name: po["vendor_name"] = v_name.group(1).strip()
+                
+                tables = page.extract_tables()
