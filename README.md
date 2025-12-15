@@ -20,3 +20,6 @@ An intelligent, hybrid pipeline designed to ingest unstructured system logs and 
 *   **Human-in-the-Loop (HITL) UI:** An interactive interface to review, edit, and re-validate extracted data.
 *   **AI Synthesis:** Generates executive summaries, trend analysis, and actionable recommendations.
 *   **Immutable Audit Trail:** Generates SHA-256 cryptographic hashes to ensure data integrity.
+*   **Enterprise Exports:**
+    *   C-Suite PDF Reports with dynamic charts.
+    *   Tableau Data Extracts (.hyper) for BI.
