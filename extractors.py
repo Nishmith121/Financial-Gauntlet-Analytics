@@ -223,3 +223,18 @@ def extract_all(pdf_path):
                 if emp: er["employee"] = emp.group(1).strip()
                 emp_id = re.search(r'Employee ID:\s*(.*?)\n', text)
                 if emp_id: er["emp_id"] = emp_id.group(1).strip()
+                
+                tables = page.extract_tables()
+                if tables:
+                    for t in tables:
+                        for row in t:
+                            if not row or row[0] == '#' or 'Date' in str(row[1]): continue
+                            if len(row) >= 6 and str(row[0]).isdigit():
+                                er["entries"].append({
+                                    "date": row[1],
+                                    "category": row[2],
+                                    "desc": row[3],
+                                    "city": row[4],
+                                    "amount": clean_amount(row[5])
+                                })
+                tot = re.search(r'TOTAL CLAIMED:\s*n([\d,.]+)', text)
