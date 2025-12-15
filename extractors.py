@@ -238,3 +238,18 @@ def extract_all(pdf_path):
                                     "amount": clean_amount(row[5])
                                 })
                 tot = re.search(r'TOTAL CLAIMED:\s*n([\d,.]+)', text)
+                if tot: er["total"] = clean_amount(tot.group(1))
+                data["expense_reports"][er["report_id"]] = er
+                
+            # --- CREDIT/DEBIT NOTES ---
+            elif 'CREDIT NOTE' in first_line or 'DEBIT NOTE' in first_line:
+                note = {"page": i+1, "type": "CREDIT" if 'CREDIT' in first_line else "DEBIT"}
+                doc_no = re.search(r'(?:CN|DN) Number:\s*((?:CN|DN)-\d{4}-\d+)', text)
+                if doc_no: note["doc_no"] = doc_no.group(1)
+                else: continue
+                
+                ref = re.search(r'Original Invoice:\s*(INV-\d{4}-\d+)', text)
+                if ref: note["ref_doc"] = ref.group(1)
+                elif re.search(r'Reference:\s*((?:CN|DN|INV)-\d{4}-\d+)', text):
+                    note["ref_doc"] = re.search(r'Reference:\s*((?:CN|DN|INV)-\d{4}-\d+)', text).group(1)
+                    
