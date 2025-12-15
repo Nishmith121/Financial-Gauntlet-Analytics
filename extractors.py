@@ -193,3 +193,18 @@ def extract_all(pdf_path):
                 if ob: bs["opening_balance"] = clean_amount(ob.group(1))
                 
                 tables = page.extract_tables()
+                if tables:
+                    for t in tables:
+                        for row in t:
+                            if not row or row[0] == 'Date' or 'Description' in str(row[1]): continue
+                            if len(row) >= 7 and re.match(r'\d{2}/\d{2}/\d{4}', str(row[0])):
+                                debit = clean_amount(row[4]) if row[4] != '-' else 0
+                                credit = clean_amount(row[5]) if row[5] != '-' else 0
+                                balance = clean_amount(row[6]) if row[6] != '-' else 0
+                                bs["transactions"].append({
+                                    "date": row[0],
+                                    "desc": row[1],
+                                    "type": row[2],
+                                    "ref": row[3],
+                                    "debit": debit,
+                                    "credit": credit,
