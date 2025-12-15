@@ -208,3 +208,18 @@ def extract_all(pdf_path):
                                     "ref": row[3],
                                     "debit": debit,
                                     "credit": credit,
+                                    "balance": balance
+                                })
+                data["bank_statements"][bs["stmt_id"]] = bs
+
+            # --- EXPENSE REPORT ---
+            elif 'EXPENSE REPORT' in first_line:
+                er = {"page": i+1, "entries": [], "employee": None, "emp_id": None, "total": 0}
+                doc_no = re.search(r'Report ID:\s*(EXP-\d{4}-\d+)', text)
+                if doc_no: er["report_id"] = doc_no.group(1)
+                else: continue
+                
+                emp = re.search(r'Employee:\s*(.*?)\n', text)
+                if emp: er["employee"] = emp.group(1).strip()
+                emp_id = re.search(r'Employee ID:\s*(.*?)\n', text)
+                if emp_id: er["emp_id"] = emp_id.group(1).strip()
