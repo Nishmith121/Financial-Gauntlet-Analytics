@@ -263,3 +263,13 @@ def extract_all(pdf_path):
 
     print(f"Extracted: {len(data['invoices'])} invs, {len(data['pos'])} POs, {len(data['bank_statements'])} BS, {len(data['expense_reports'])} EXPs")
     
+    with open(cache_file, 'w', encoding='utf-8') as f:
+        json.dump(data, f)
+        
+    return data
+
+if __name__ == "__main__":
+    d = extract_all("gauntlet.pdf")
+    print("Invoices:", len(d["invoices"]))
+    print("POs:", len(d["pos"]))
+    print("Bank Statements:", len(d["bank_statements"]))
