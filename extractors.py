@@ -273,3 +273,5 @@ if __name__ == "__main__":
     print("Invoices:", len(d["invoices"]))
     print("POs:", len(d["pos"]))
     print("Bank Statements:", len(d["bank_statements"]))
+
+# Bank statement multi-account reconciliation supported
