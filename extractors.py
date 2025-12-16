@@ -253,3 +253,13 @@ def extract_all(pdf_path):
                 elif re.search(r'Reference:\s*((?:CN|DN|INV)-\d{4}-\d+)', text):
                     note["ref_doc"] = re.search(r'Reference:\s*((?:CN|DN|INV)-\d{4}-\d+)', text).group(1)
                     
+                gt = re.search(r'TOTAL AMOUNT:\s*n([\d,.]+)', text)
+                if gt: note["amount"] = clean_amount(gt.group(1))
+                
+                if note["type"] == "CREDIT":
+                    data["credit_notes"][note["doc_no"]] = note
+                else:
+                    data["debit_notes"][note["doc_no"]] = note
+
+    print(f"Extracted: {len(data['invoices'])} invs, {len(data['pos'])} POs, {len(data['bank_statements'])} BS, {len(data['expense_reports'])} EXPs")
+    
