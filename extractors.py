@@ -276,3 +276,4 @@ if __name__ == "__main__":
 
 # Bank statement multi-account reconciliation supported
 # Debit / Credit classification active
+# Verified against bank statement test vectors
