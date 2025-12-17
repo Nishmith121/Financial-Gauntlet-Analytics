@@ -276,3 +276,4 @@ if __name__ == "__main__":
 
 # Expense report metadata extraction
 # Employee ID tracking enabled
+# Category breakdown mapped
