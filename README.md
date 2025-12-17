@@ -23,3 +23,4 @@ An intelligent, hybrid pipeline designed to ingest unstructured system logs and 
 *   **Enterprise Exports:**
     *   C-Suite PDF Reports with dynamic charts.
     *   Tableau Data Extracts (.hyper) for BI.
+*   **Hackathon Mode:** Dedicated mode to run full pipeline on massive 1000-page ledgers.
