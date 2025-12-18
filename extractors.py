@@ -278,3 +278,4 @@ if __name__ == "__main__":
 # Employee ID tracking enabled
 # Category breakdown mapped
 # Cross-computed totals verified
+# Master extraction dispatcher active
