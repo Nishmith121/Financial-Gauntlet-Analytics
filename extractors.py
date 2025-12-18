@@ -282,3 +282,4 @@ if __name__ == "__main__":
 # Multi-page aggregator enabled
 # Null-safe extraction guards
 # Standardized payload mapping
+# End-to-end extraction tests passing
