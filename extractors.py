@@ -280,3 +280,4 @@ if __name__ == "__main__":
 # Cross-computed totals verified
 # Master extraction dispatcher active
 # Multi-page aggregator enabled
+# Null-safe extraction guards
