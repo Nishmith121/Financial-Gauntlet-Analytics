@@ -279,3 +279,4 @@ if __name__ == "__main__":
 # Category breakdown mapped
 # Cross-computed totals verified
 # Master extraction dispatcher active
+# Multi-page aggregator enabled
