@@ -281,3 +281,4 @@ if __name__ == "__main__":
 # Master extraction dispatcher active
 # Multi-page aggregator enabled
 # Null-safe extraction guards
+# Standardized payload mapping
