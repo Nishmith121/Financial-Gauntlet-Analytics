@@ -273,13 +273,3 @@ if __name__ == "__main__":
     print("Invoices:", len(d["invoices"]))
     print("POs:", len(d["pos"]))
     print("Bank Statements:", len(d["bank_statements"]))
-
-# Expense report metadata extraction
-# Employee ID tracking enabled
-# Category breakdown mapped
-# Cross-computed totals verified
-# Master extraction dispatcher active
-# Multi-page aggregator enabled
-# Null-safe extraction guards
-# Standardized payload mapping
-# End-to-end extraction tests passing
