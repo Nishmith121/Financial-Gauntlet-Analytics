@@ -18,3 +18,18 @@ def is_valid_date(date_str):
         return False
 
 def run_detectors(data):
+    findings = []
+    f_num = 1
+    def add_finding(cat, pages, docs, desc, rep_val, corr_val):
+        nonlocal f_num
+        findings.append({
+            "finding_id": f"F-{f_num:03d}",
+            "category": cat,
+            "pages": pages,
+            "document_refs": docs,
+            "description": desc,
+            "reported_value": str(rep_val),
+            "correct_value": str(corr_val)
+        })
+        f_num += 1
+
