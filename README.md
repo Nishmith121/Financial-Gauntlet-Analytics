@@ -24,3 +24,11 @@ An intelligent, hybrid pipeline designed to ingest unstructured system logs and 
     *   C-Suite PDF Reports with dynamic charts.
     *   Tableau Data Extracts (.hyper) for BI.
 *   **Hackathon Mode:** Dedicated mode to run full pipeline on massive 1000-page ledgers.
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+1.  Python 3.9+
+2.  Tesseract OCR installed on your system.
+3.  A Google Gemini API Key.
