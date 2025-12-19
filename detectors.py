@@ -43,3 +43,4 @@ def run_detectors(data):
     # EASY TIER
     # ==========================
     
+# Finding ID format: F-XXX with zero padding
