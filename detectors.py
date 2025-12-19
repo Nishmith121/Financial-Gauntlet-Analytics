@@ -33,3 +33,13 @@ def run_detectors(data):
         })
         f_num += 1
 
+    vendors = data.get("vendors", {})
+    invoices = data.get("invoices", {})
+    pos = data.get("pos", {})
+    bank_statements = data.get("bank_statements", {})
+    expense_reports = data.get("expense_reports", {})
+
+    # ==========================
+    # EASY TIER
+    # ==========================
+    
