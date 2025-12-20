@@ -73,3 +73,18 @@ def run_detectors(data):
                     add_finding("billing_typo", [inv["page"]], [inv_no], f"Time typo", item["qty"], corr_qty)
                 elif abs(dec - 0.30) < 0.01:
                     corr_qty = item["qty"] - 0.30 + 0.50
+                    if abs(item["qty"] * item["rate"] - item["amount"]) < 1.0:
+                        add_finding("billing_typo", [inv["page"]], [inv_no], f"Time typo", item["qty"], corr_qty)
+                elif abs(dec - 0.45) < 0.01:
+                    corr_qty = item["qty"] - 0.45 + 0.75
+                    if abs(item["qty"] * item["rate"] - item["amount"]) < 1.0:
+                        add_finding("billing_typo", [inv["page"]], [inv_no], f"Time typo", item["qty"], corr_qty)
+
+    # 3. duplicate_line_item
+    for inv_no, inv in invoices.items():
+        seen = set()
+        for idx, item in enumerate(inv["items"]):
+            k = (item["desc"], item["qty"], item["rate"])
+            if k in seen:
+                add_finding("duplicate_line_item", [inv["page"]], [inv_no], "Duplicate line item", item["amount"], 0)
+            seen.add(k)
