@@ -103,3 +103,4 @@ def run_detectors(data):
     # MEDIUM TIER
     # ==========================
 
+# Arithmetic error detection verified
