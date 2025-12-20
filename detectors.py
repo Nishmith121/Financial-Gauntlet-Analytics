@@ -88,3 +88,18 @@ def run_detectors(data):
             if k in seen:
                 add_finding("duplicate_line_item", [inv["page"]], [inv_no], "Duplicate line item", item["amount"], 0)
             seen.add(k)
+
+    # 4. invalid_date
+    for inv_no, inv in invoices.items():
+        if inv["date"] and not is_valid_date(inv["date"]):
+            add_finding("invalid_date", [inv["page"]], [inv_no], "Invalid date", inv["date"], "valid_date")
+    for po_no, po in pos.items():
+        if po.get("date") and not is_valid_date(po["date"]):
+            add_finding("invalid_date", [po["page"]], [po_no], "Invalid PO date", po["date"], "valid_date")
+
+    # 5. wrong_tax_rate (Skip for now unless we know HSN rates)
+
+    # ==========================
+    # MEDIUM TIER
+    # ==========================
+
