@@ -58,3 +58,18 @@ def run_detectors(data):
             add_finding("arithmetic_error", [inv["page"]], [inv_no], "Grand total mismatch", inv["grand_total"], calc_gt)
 
     # 2. billing_typo
+    for inv_no, inv in invoices.items():
+        for idx, item in enumerate(inv["items"]):
+            # 0.15 hrs logic: usually someone puts 0.15 (15 mins) but mathematically it should be 0.25 hrs
+            # We see if rate * 0.25 == amount but qty says 0.15
+            if abs(item["qty"] - 0.15) < 0.01 and abs(item["rate"] * 0.25 - item["amount"]) < 1.0:
+                add_finding("billing_typo", [inv["page"]], [inv_no], "Time typo 0.15 mins instead of 0.25 hrs", 0.15, 0.25)
+            # Or vice versa? The prompt: "Hours logged as 0.15 (decimal) when it means 0:15 = 0.25 hrs. The rate x wrong qty gives wrong amount"
+            elif item["unit"].lower() in ['hr', 'hrs']:
+                # Maybe they wrote qty as 1.15 for 1 hr 15 mins which is 1.25.
+                dec = item["qty"] % 1
+                if abs(dec - 0.15) < 0.01 and abs(item["qty"] * item["rate"] - item["amount"]) < 1.0: # Means the calculation used the raw .15
+                    corr_qty = item["qty"] - 0.15 + 0.25
+                    add_finding("billing_typo", [inv["page"]], [inv_no], f"Time typo", item["qty"], corr_qty)
+                elif abs(dec - 0.30) < 0.01:
+                    corr_qty = item["qty"] - 0.30 + 0.50
