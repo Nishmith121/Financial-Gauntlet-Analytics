@@ -43,4 +43,18 @@ def run_detectors(data):
     # EASY TIER
     # ==========================
     
-# Finding ID format: F-XXX with zero padding
+    # 1. arithmetic_error
+    for inv_no, inv in invoices.items():
+        calc_sub = sum(i["amount"] for i in inv["items"])
+        if abs(calc_sub - inv["subtotal"]) > 1.0:
+            add_finding("arithmetic_error", [inv["page"]], [inv_no], "Subtotal mismatch", inv["subtotal"], calc_sub)
+        
+        for idx, item in enumerate(inv["items"]):
+            if abs(item["qty"] * item["rate"] - item["amount"]) > 1.0:
+                add_finding("arithmetic_error", [inv["page"]], [inv_no], f"Line item {idx+1} mismatch", item["amount"], round(item["qty"] * item["rate"], 2))
+
+        calc_gt = inv["subtotal"] + inv.get("cgst", 0) + inv.get("sgst", 0)
+        if abs(calc_gt - inv["grand_total"]) > 1.0:
+            add_finding("arithmetic_error", [inv["page"]], [inv_no], "Grand total mismatch", inv["grand_total"], calc_gt)
+
+    # 2. billing_typo
