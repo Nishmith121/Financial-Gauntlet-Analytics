@@ -32,3 +32,9 @@ An intelligent, hybrid pipeline designed to ingest unstructured system logs and 
 1.  Python 3.9+
 2.  Tesseract OCR installed on your system.
 3.  A Google Gemini API Key.
+### Installation
+
+```bash
+git clone https://github.com/Nishmith121/Financial-Gauntlet-Analytics.git
+cd Financial-Gauntlet-Analytics
+```
