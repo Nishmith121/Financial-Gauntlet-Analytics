@@ -38,3 +38,6 @@ An intelligent, hybrid pipeline designed to ingest unstructured system logs and 
 git clone https://github.com/Nishmith121/Financial-Gauntlet-Analytics.git
 cd Financial-Gauntlet-Analytics
 ```
+```bash
+pip install -r requirements.txt
+```
