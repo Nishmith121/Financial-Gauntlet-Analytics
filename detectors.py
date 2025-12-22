@@ -133,3 +133,18 @@ def run_detectors(data):
             if best_score < 1.0 and best_score > 0.8:
                 add_finding("vendor_name_typo", [inv["page"]], [inv_no], "Vendor name typo", inv["vendor_name"], best_match)
 
+    # 8. double_payment
+    seen_payments = {}
+    for bs_id, bs in bank_statements.items():
+        for tr in bs["transactions"]:
+            if tr["debit"] > 0:
+                k = (tr["desc"], tr["debit"])
+                if k in seen_payments:
+                    prev_bs_id, prev_pg = seen_payments[k]
+                    # Same payment twice?
+                    if prev_bs_id != bs_id:
+                        add_finding("double_payment", [bs["page"], prev_pg], [bs_id, prev_bs_id], "Double payment", tr["debit"], 0)
+                seen_payments[k] = (bs_id, bs["page"])
+
+    # 9. ifsc_mismatch
+    for inv_no, inv in invoices.items():
