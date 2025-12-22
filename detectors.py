@@ -103,4 +103,18 @@ def run_detectors(data):
     # MEDIUM TIER
     # ==========================
 
-# Arithmetic error detection verified
+    # 6. po_invoice_mismatch
+    for inv_no, inv in invoices.items():
+        if inv.get("po_ref") and inv["po_ref"] in pos:
+            po = pos[inv["po_ref"]]
+            # Simple check if an invoice item rate doesn't match PO rate for same desc
+            po_items = {i["desc"]: i for i in po["items"]}
+            inv_items = {i["desc"]: i for i in inv["items"]}
+            for desc, item in inv_items.items():
+                if desc in po_items:
+                    if abs(item["rate"] - po_items[desc]["rate"]) > 0.01:
+                        add_finding("po_invoice_mismatch", [inv["page"], po["page"]], [inv_no, po["po_no"]], "Rate mismatch", item["rate"], po_items[desc]["rate"])
+                    # Check qty mismatch only if entire PO is billed in one go? Usually qty may differ if partial billing
+                    # Let's check rate mostly
+
+    # 7. vendor_name_typo
