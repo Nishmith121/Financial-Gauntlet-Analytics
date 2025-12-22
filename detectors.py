@@ -118,3 +118,18 @@ def run_detectors(data):
                     # Let's check rate mostly
 
     # 7. vendor_name_typo
+    for inv_no, inv in invoices.items():
+        if inv.get("vendor_name"):
+            # If not exact match but is very close (typo)
+            # Real fuzzy match using SequenceMatcher
+            from difflib import SequenceMatcher
+            best_match = None
+            best_score = 0
+            for vname in vendors:
+                score = SequenceMatcher(None, inv["vendor_name"].lower(), vname.lower()).ratio()
+                if score > best_score:
+                    best_score = score
+                    best_match = vname
+            if best_score < 1.0 and best_score > 0.8:
+                add_finding("vendor_name_typo", [inv["page"]], [inv_no], "Vendor name typo", inv["vendor_name"], best_match)
+
