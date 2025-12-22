@@ -148,3 +148,18 @@ def run_detectors(data):
 
     # 9. ifsc_mismatch
     for inv_no, inv in invoices.items():
+        if inv.get("ifsc") and inv.get("vendor_name"):
+            # match vendor
+            for vname, vdata in vendors.items():
+                if vname.lower() in inv["vendor_name"].lower() or inv["vendor_name"].lower() in vname.lower():
+                    if inv["ifsc"] and vdata.get("ifsc") and inv["ifsc"] != vdata["ifsc"]:
+                        add_finding("ifsc_mismatch", [inv["page"]], [inv_no], "IFSC mismatch", inv["ifsc"], vdata["ifsc"])
+
+    # 10. duplicate_expense
+    seen_exps = {}
+    for er_id, er in expense_reports.items():
+        for e in er["entries"]:
+            k = (e["date"], e["desc"], e["amount"])
+            if k in seen_exps:
+                prev_er_id, prev_pg = seen_exps[k]
+                if prev_er_id != er_id:
