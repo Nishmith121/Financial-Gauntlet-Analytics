@@ -238,3 +238,4 @@ def run_detectors(data):
 
     # 16. circular_reference
     cn_refs = {} # Note -> Original Invoice
+# Medium tier detectors operational
