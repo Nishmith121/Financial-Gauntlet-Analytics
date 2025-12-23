@@ -208,3 +208,18 @@ def run_detectors(data):
             if p_item["desc"] == desc:
                 if total_qty > p_item["qty"] * 1.20: # Exceeds by 20%
                     docs = [po_no] + [x[0] for x in invs_per_po_item[k]]
+                    pgs = [po["page"]] + [x[1] for x in invs_per_po_item[k]]
+                    add_finding("quantity_accumulation", pgs, docs, "Quantity accumulation > 120%", total_qty, p_item["qty"])
+
+    # 14. price_escalation
+    for po_no, po_data in pos.items():
+        # Check all invoices against this PO
+        invs_for_po = [inv for inv in invoices.values() if inv.get("po_ref") == po_no]
+        if len(invs_for_po) >= 4:
+            docs = [po_no] + [inv["invoice_no"] for inv in invs_for_po]
+            pgs = [po_data["page"]] + [inv["page"] for inv in invs_for_po]
+            # Verify if ALL 4 charge rates > contracted
+            all_escalated = True
+            for inv in invs_for_po:
+                for idx, inv_item in enumerate(inv["items"]):
+                    # find matching PO item
