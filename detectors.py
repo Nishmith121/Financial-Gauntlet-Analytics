@@ -178,3 +178,18 @@ def run_detectors(data):
     STATE_CODES = { "Maharashtra": "27", "Karnataka": "29", "Tamil Nadu": "33", "Delhi": "07", "Telangana": "36", "Gujarat": "24", "West Bengal": "19"}
     for inv_no, inv in invoices.items():
         gstin = inv["vendor_dtl"].get("gstin", "")
+        addr = inv["vendor_dtl"].get("address", "")
+        if gstin and len(gstin) >= 2:
+            sc = gstin[:2]
+            for state, expected_sc in STATE_CODES.items():
+                if state in addr:
+                    if sc != expected_sc:
+                        add_finding("gstin_state_mismatch", [inv["page"]], [inv_no], "GSTIN state mismatch", sc, expected_sc)
+                    break
+
+    # ==========================
+    # EVIL TIER
+    # ==========================
+    
+    # 13. quantity_accumulation
+    po_item_qty_accum = {} # (po_no, desc) -> total_qty_billed
