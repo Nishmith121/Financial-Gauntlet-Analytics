@@ -193,3 +193,18 @@ def run_detectors(data):
     
     # 13. quantity_accumulation
     po_item_qty_accum = {} # (po_no, desc) -> total_qty_billed
+    invs_per_po_item = {} # (po_no, desc) -> [(inv_no, pg)]
+    for inv_no, inv in invoices.items():
+        po_no = inv.get("po_ref")
+        if po_no and po_no in pos:
+            for item in inv["items"]:
+                k = (po_no, item["desc"])
+                po_item_qty_accum[k] = po_item_qty_accum.get(k, 0) + item["qty"]
+                invs_per_po_item.setdefault(k, []).append((inv_no, inv["page"]))
+    for k, total_qty in po_item_qty_accum.items():
+        po_no, desc = k
+        po = pos[po_no]
+        for p_item in po["items"]:
+            if p_item["desc"] == desc:
+                if total_qty > p_item["qty"] * 1.20: # Exceeds by 20%
+                    docs = [po_no] + [x[0] for x in invs_per_po_item[k]]
