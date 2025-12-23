@@ -163,3 +163,18 @@ def run_detectors(data):
             if k in seen_exps:
                 prev_er_id, prev_pg = seen_exps[k]
                 if prev_er_id != er_id:
+                    add_finding("duplicate_expense", [er["page"], prev_pg], [er_id, prev_er_id], "Duplicate expense", e["amount"], 0)
+            seen_exps[k] = (er_id, er["page"])
+
+    # 11. date_cascade
+    for inv_no, inv in invoices.items():
+        if inv.get("po_ref") and inv["po_ref"] in pos:
+            inv_d = parse_date(inv["date"])
+            po_d = parse_date(pos[inv["po_ref"]]["date"])
+            if inv_d and po_d and inv_d < po_d:
+                add_finding("date_cascade", [inv["page"], pos[inv["po_ref"]]["page"]], [inv_no, inv["po_ref"]], "Invoice before PO", inv["date"], pos[inv["po_ref"]]["date"])
+
+    # 12. gstin_state_mismatch
+    STATE_CODES = { "Maharashtra": "27", "Karnataka": "29", "Tamil Nadu": "33", "Delhi": "07", "Telangana": "36", "Gujarat": "24", "West Bengal": "19"}
+    for inv_no, inv in invoices.items():
+        gstin = inv["vendor_dtl"].get("gstin", "")
