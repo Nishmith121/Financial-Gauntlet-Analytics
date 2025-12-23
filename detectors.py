@@ -223,3 +223,18 @@ def run_detectors(data):
             for inv in invs_for_po:
                 for idx, inv_item in enumerate(inv["items"]):
                     # find matching PO item
+                    po_matching = [p for p in po_data["items"] if p["desc"] == inv_item["desc"]]
+                    if po_matching:
+                        if inv_item["rate"] <= po_matching[0]["rate"]:
+                            all_escalated = False
+            if all_escalated:
+                 add_finding("price_escalation", pgs, docs, "All invoices escalated price", "escalated", "contracted")
+
+    # 15. balance_drift
+    # Need to order bank statements by date
+    # Then check opening balance of month N vs closing balance of month N-1
+    # We lack closing balance in extractor right now. Oh actually Closing = Opening + sum(credits) - sum(debits).
+    # Since bs might not be ordered, we'll sort them. (Assumes 1 account, though there may be more).
+
+    # 16. circular_reference
+    cn_refs = {} # Note -> Original Invoice
