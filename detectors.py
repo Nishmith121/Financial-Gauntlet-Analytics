@@ -238,4 +238,18 @@ def run_detectors(data):
 
     # 16. circular_reference
     cn_refs = {} # Note -> Original Invoice
-# Medium tier detectors operational
+    for n_id, note in data.get("credit_notes", {}).items():
+        if note.get("ref_doc"): cn_refs[n_id] = note["ref_doc"]
+    for n_id, note in data.get("debit_notes", {}).items():
+        if note.get("ref_doc"): cn_refs[n_id] = note["ref_doc"]
+    # Check loops
+    for start in cn_refs:
+        visited = set()
+        curr = start
+        path = []
+        while curr in cn_refs:
+            visited.add(curr)
+            path.append(curr)
+            curr = cn_refs[curr]
+            if curr in visited:
+                # Cycle found
