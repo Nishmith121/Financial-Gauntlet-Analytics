@@ -253,3 +253,18 @@ def run_detectors(data):
             curr = cn_refs[curr]
             if curr in visited:
                 # Cycle found
+                v_docs = path + [curr]
+                # To find pages
+                pgs = []
+                for d in v_docs:
+                    if d in invoices: pgs.append(invoices[d]["page"])
+                    if d in data.get("credit_notes", {}): pgs.append(data["credit_notes"][d]["page"])
+                    if d in data.get("debit_notes", {}): pgs.append(data["debit_notes"][d]["page"])
+                add_finding("circular_reference", pgs, v_docs, "Circular reference found", "loop", "no loop")
+                break
+
+    # 17. triple_expense_claim
+    exp_claims = {} # (city, amount) -> [(er_id, pg)]
+    for er_id, er in expense_reports.items():
+        for e in er["entries"]:
+            if 'hotel' in e["desc"].lower() or 'accom' in e["desc"].lower() or 'stay' in e["desc"].lower():
