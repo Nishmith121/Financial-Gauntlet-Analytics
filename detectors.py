@@ -283,3 +283,18 @@ def run_detectors(data):
     emp_map = {}
     for er_id, er in expense_reports.items():
         if er["emp_id"] and er["employee"]:
+            if er["emp_id"] in emp_map and emp_map[er["emp_id"]]["name"].lower() != er["employee"].lower():
+                docs = [emp_map[er["emp_id"]]["doc"], er_id]
+                pgs = [emp_map[er["emp_id"]]["page"], er["page"]]
+                add_finding("employee_id_collision", pgs, docs, "Employee ID collision", er["employee"], emp_map[er["emp_id"]]["name"])
+            else:
+                emp_map[er["emp_id"]] = {"name": er["employee"], "doc": er_id, "page": er["page"]}
+
+    # 19. fake_vendor
+    for inv_no, inv in invoices.items():
+        if inv["vendor_name"]:
+            # Check strictly against vendor master
+            vname = inv["vendor_name"].lower()
+            found = False
+            for real_v in vendors:
+                if SequenceMatcher(None, vname, real_v.lower()).ratio() > 0.8: # Very loose to not false positive on normal typos
