@@ -41,3 +41,9 @@ cd Financial-Gauntlet-Analytics
 ```bash
 pip install -r requirements.txt
 ```
+### Configure Environment Variables
+
+Create a `.env` file:
+```env
+GEMINI_API_KEY=your_key_here
+```
