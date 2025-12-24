@@ -268,3 +268,18 @@ def run_detectors(data):
     for er_id, er in expense_reports.items():
         for e in er["entries"]:
             if 'hotel' in e["desc"].lower() or 'accom' in e["desc"].lower() or 'stay' in e["desc"].lower():
+                k = (e["city"], e["amount"])
+                exp_claims.setdefault(k, [])
+                if er_id not in [x[0] for x in exp_claims[k]]: # Avoid counting same ER multiple times if hotel is split?
+                    exp_claims[k].append((er_id, er["page"]))
+    for k, claims in exp_claims.items():
+        if len(claims) >= 3:
+            docs = [x[0] for x in claims]
+            pgs = [x[1] for x in claims]
+            add_finding("triple_expense_claim", pgs, docs, "Triple hotel claim", "3+ claims", "1 claim")
+
+    # 18. employee_id_collision
+    # Two different names for same EMP_ID
+    emp_map = {}
+    for er_id, er in expense_reports.items():
+        if er["emp_id"] and er["employee"]:
