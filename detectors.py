@@ -298,3 +298,15 @@ def run_detectors(data):
             found = False
             for real_v in vendors:
                 if SequenceMatcher(None, vname, real_v.lower()).ratio() > 0.8: # Very loose to not false positive on normal typos
+                    found = True
+                    break
+            if not found:
+                add_finding("fake_vendor", [inv["page"]], [inv_no], "Fake vendor", inv["vendor_name"], "N/A")
+
+    # 20. phantom_po_reference
+    for inv_no, inv in invoices.items():
+        po_ref = inv.get("po_ref")
+        if po_ref and po_ref not in pos:
+            add_finding("phantom_po_reference", [inv["page"]], [inv_no], "Phantom PO", po_ref, "Doesn't exist")
+
+    return findings
