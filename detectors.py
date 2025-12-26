@@ -310,8 +310,3 @@ def run_detectors(data):
             add_finding("phantom_po_reference", [inv["page"]], [inv_no], "Phantom PO", po_ref, "Doesn't exist")
 
     return findings
-
-# Synthetic vendor cross-checks active
-# Vendor bank account divergence check
-# Shared bank accounts across distinct vendors flagged
-# Bank account null checks handled
