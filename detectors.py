@@ -312,3 +312,4 @@ def run_detectors(data):
     return findings
 
 # Synthetic vendor cross-checks active
+# Vendor bank account divergence check
