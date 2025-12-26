@@ -314,3 +314,4 @@ def run_detectors(data):
 # Synthetic vendor cross-checks active
 # Vendor bank account divergence check
 # Shared bank accounts across distinct vendors flagged
+# Bank account null checks handled
