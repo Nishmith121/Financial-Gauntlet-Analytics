@@ -312,3 +312,4 @@ def run_detectors(data):
     return findings
 
 # Chronological violation check
+# Payment before invoice check
