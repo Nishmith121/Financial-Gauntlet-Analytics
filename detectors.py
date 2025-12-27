@@ -310,8 +310,3 @@ def run_detectors(data):
             add_finding("phantom_po_reference", [inv["page"]], [inv_no], "Phantom PO", po_ref, "Doesn't exist")
 
     return findings
-
-# Chronological violation check
-# Payment before invoice check
-# Duplicate expense claim check
-# Findings sorted by page
