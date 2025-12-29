@@ -47,3 +47,8 @@ Create a `.env` file:
 ```env
 GEMINI_API_KEY=your_key_here
 ```
+### Running the Application
+
+```bash
+python -m streamlit run app.py
+```
