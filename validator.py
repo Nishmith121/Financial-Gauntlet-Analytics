@@ -78,3 +78,43 @@ def validate_line_items(extracted_data: dict) -> dict:
             total = clean_dec(row.get("total", row.get("amount", 0)))
             discount = clean_dec(row.get("discount", 0))
 
+            if total > MAX_BOUND or price > MAX_BOUND:
+                row_errors.append(f"Boundary Exceeded / OCR Parsing Error: Values (total={total}, price={price}) exceed 999,999,999.99 limit.")
+                row["errors"] = row_errors
+                anomalies.append(row)
+                continue
+
+            if grand_total > Decimal('0') and price > (grand_total * Decimal('0.5')):
+                row_errors.append(f"Outlier/Suspicious Proportion: unit_price ({price}) exceeds 50% of the grand_total ({grand_total}).")
+
+            if is_fee:
+                expected_fee = (subtotal * Decimal('0.005')).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
+                if abs(total - expected_fee) > Decimal('0.05'):
+                    row_errors.append(f"Critical Vendor Overcharge: fee {total} != 0.5% of subtotal {subtotal} (expected {expected_fee})")
+            else:
+                expected_total = (qty * price * (1 - discount / 100)).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
+                if total != Decimal('0') and abs(expected_total - total) > Decimal('0.50'):
+                    row_errors.append(f"Math fail: {qty}x{price} -{discount}% = {expected_total}, got {total}")
+
+            if row_errors:
+                row["errors"] = row_errors
+                anomalies.append(row)
+            else:
+                valid_records.append(row)
+
+    # ── IRS FORM 1040 ─────────────────────────────────────────────────────────
+    elif doc_type == "tax_1040":
+        for i, rec in enumerate(records):
+            row = dict(rec)
+            row_errors = []
+            
+            if i in duplicate_indices:
+                row_errors.append("Potential Duplicate Record: exact same description and total found elsewhere.")
+
+            wages = clean_dec(row.get("wages", 0))
+            interest = clean_dec(row.get("interest", 0))
+            dividends = clean_dec(row.get("dividends", 0))
+            total_income = clean_dec(row.get("total_income", 0))
+
+            if total_income > MAX_BOUND or wages > MAX_BOUND:
+                row_errors.append(f"Boundary Exceeded / OCR Parsing Error: Value exceeds 999,999,999.99 limit.")
