@@ -158,3 +158,29 @@ def validate_line_items(extracted_data: dict) -> dict:
             if covered != Decimal('0') and abs(expected_covered - covered) > Decimal('1.00'):
                 row_errors.append(f"Insurance math fail: claim({claim_amount}) - deductible({deductible}) = {expected_covered}, reported covered={covered}")
 
+            if row_errors:
+                row["errors"] = row_errors
+                anomalies.append(row)
+            else:
+                valid_records.append(row)
+
+    # ── LOGS / UNKNOWN ────────────────────────────────────────────────────────
+    else:
+        for i, rec in enumerate(records):
+            row = dict(rec)
+            if i in duplicate_indices:
+                row["errors"] = ["Potential Duplicate Record: exact same description, quantity, and total found elsewhere."]
+                anomalies.append(row)
+            else:
+                valid_records.append(row)
+
+    total_checked = len(valid_records) + len(anomalies)
+    accuracy = len(valid_records) / total_checked if total_checked > 0 else 0.0
+
+    return {
+        "doc_type": doc_type,
+        "status": "PASS" if not anomalies else "FAIL",
+        "valid_records": valid_records,
+        "anomalies": anomalies,
+        "accuracy_score": accuracy,
+    }
