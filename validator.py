@@ -38,3 +38,43 @@ def validate_line_items(extracted_data: dict) -> dict:
         })
 
     # 2. SMART ANOMALY: Duplicate Detection Rule
+    seen_items = {}
+    duplicate_indices = set()
+    for i, rec in enumerate(records):
+        desc = str(rec.get("description", rec.get("item", ""))).lower().strip()
+        qty = clean_dec(rec.get("qty", rec.get("quantity", 1)))
+        total = clean_dec(rec.get("total", rec.get("amount", 0)))
+        
+        if desc and desc != "none" and total != Decimal('0'):
+            key = (desc, qty, total)
+            if key in seen_items:
+                duplicate_indices.add(i)
+                duplicate_indices.add(seen_items[key])
+            else:
+                seen_items[key] = i
+
+    # ── INVOICE ──────────────────────────────────────────────────────────────
+    if doc_type == "invoice":
+        subtotal = Decimal('0')
+        for rec in records:
+            desc = str(rec.get("description", rec.get("item", ""))).lower()
+            is_fee = "payment gateway fee" in desc or "gateway commission" in desc
+            if not is_fee:
+                item_tot = clean_dec(rec.get("total", rec.get("amount", 0)))
+                if item_tot <= MAX_BOUND:
+                    subtotal += item_tot
+
+        for i, rec in enumerate(records):
+            row = dict(rec)
+            desc = str(row.get("description", row.get("item", ""))).lower()
+            is_fee = "payment gateway fee" in desc or "gateway commission" in desc
+            row_errors = []
+
+            if i in duplicate_indices:
+                row_errors.append("Potential Duplicate Billing: exact same description, quantity, and total found elsewhere.")
+
+            qty = clean_dec(row.get("qty", row.get("quantity", 1)))
+            price = clean_dec(row.get("price", row.get("rate", 0)))
+            total = clean_dec(row.get("total", row.get("amount", 0)))
+            discount = clean_dec(row.get("discount", 0))
+
