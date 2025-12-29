@@ -118,3 +118,43 @@ def validate_line_items(extracted_data: dict) -> dict:
 
             if total_income > MAX_BOUND or wages > MAX_BOUND:
                 row_errors.append(f"Boundary Exceeded / OCR Parsing Error: Value exceeds 999,999,999.99 limit.")
+                row["errors"] = row_errors
+                anomalies.append(row)
+                continue
+
+            expected_income = wages + interest + dividends
+            if total_income != Decimal('0') and abs(expected_income - total_income) > Decimal('1.00'):
+                row_errors.append(f"Tax math fail: wages+interest+dividends={expected_income}, reported total_income={total_income}")
+
+            if row_errors:
+                row["errors"] = row_errors
+                anomalies.append(row)
+            else:
+                valid_records.append(row)
+
+    # ── INSURANCE CLAIM ───────────────────────────────────────────────────────
+    elif doc_type == "insurance_claim":
+        for i, rec in enumerate(records):
+            row = dict(rec)
+            row_errors = []
+
+            claim_amount = clean_dec(row.get("claim_amount", 0))
+            deductible = clean_dec(row.get("deductible", 0))
+            covered = clean_dec(row.get("covered_amount", 0))
+
+            if claim_amount > MAX_BOUND or covered > MAX_BOUND:
+                row_errors.append(f"Boundary Exceeded / OCR Parsing Error: Value exceeds 999,999,999.99 limit.")
+                row["errors"] = row_errors
+                anomalies.append(row)
+                continue
+
+            if grand_total > Decimal('0') and claim_amount > (grand_total * Decimal('0.5')):
+                row_errors.append(f"Outlier/Suspicious Proportion: claim_amount ({claim_amount}) exceeds 50% of the grand_total ({grand_total}).")
+
+            if i in duplicate_indices:
+                row_errors.append("Potential Duplicate Record: exact same description and total found elsewhere.")
+
+            expected_covered = claim_amount - deductible
+            if covered != Decimal('0') and abs(expected_covered - covered) > Decimal('1.00'):
+                row_errors.append(f"Insurance math fail: claim({claim_amount}) - deductible({deductible}) = {expected_covered}, reported covered={covered}")
+
