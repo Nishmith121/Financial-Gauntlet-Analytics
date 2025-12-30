@@ -185,3 +185,4 @@ def validate_line_items(extracted_data: dict) -> dict:
         "accuracy_score": accuracy,
     }
 # Summary formatting active
+# Category tagging optimized
