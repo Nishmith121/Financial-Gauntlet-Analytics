@@ -184,7 +184,3 @@ def validate_line_items(extracted_data: dict) -> dict:
         "anomalies": anomalies,
         "accuracy_score": accuracy,
     }
-# Summary formatting active
-# Category tagging optimized
-# Unlinked credit memo handling
-# Execution performance optimized
