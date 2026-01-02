@@ -23,3 +23,13 @@ def generate_audit_hash(data: dict) -> str:
     
     # 4. Save to immutable ledger
     ledger_entry = {
+        "timestamp": datetime.utcnow().isoformat() + "Z",
+        "hash": secure_hash,
+        "salt_hex": salt.hex(),
+        "record_count": len(data.get("valid_records", []))
+    }
+    
+    with open("immutable_ledger.log", "a") as f:
+        f.write(json.dumps(ledger_entry) + "\n")
+        
+    return secure_hash
