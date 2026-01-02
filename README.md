@@ -52,3 +52,6 @@ GEMINI_API_KEY=your_key_here
 ```bash
 python -m streamlit run app.py
 ```
+## 🔒 Security Note
+
+**Do not commit your .env file or hardcode API keys.** Always use environment variables.
