@@ -33,5 +33,3 @@ def generate_audit_hash(data: dict) -> str:
         f.write(json.dumps(ledger_entry) + "\n")
         
     return secure_hash
-
-# Payload verification verified
