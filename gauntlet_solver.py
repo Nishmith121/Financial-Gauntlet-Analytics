@@ -13,3 +13,13 @@ def solve_gauntlet(pdf_path, team_name="AI_Agents"):
     
     extract_time = time.time()
     print(f"Extraction complete in {extract_time - start_time:.2f} seconds.")
+    
+    # 2. Detection Phase
+    findings = run_detectors(parsed_data)
+    
+    detect_time = time.time()
+    print(f"Detection complete in {detect_time - extract_time:.2f} seconds. Found {len(findings)} needles.")
+    
+    # 3. Format Submission
+    submission = {
+        "team_id": team_name,
