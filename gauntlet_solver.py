@@ -23,3 +23,14 @@ def solve_gauntlet(pdf_path, team_name="AI_Agents"):
     # 3. Format Submission
     submission = {
         "team_id": team_name,
+        "findings": findings
+    }
+    
+    out_file = "submission.json"
+    with open(out_file, "w", encoding="utf-8") as f:
+        json.dump(submission, f, indent=2)
+        
+    print(f"Submission saved to {out_file}")
+    
+if __name__ == "__main__":
+    solve_gauntlet("gauntlet.pdf", team_name="Antigravity_Solver")
