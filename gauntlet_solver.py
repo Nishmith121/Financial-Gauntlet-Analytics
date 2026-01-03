@@ -34,3 +34,5 @@ def solve_gauntlet(pdf_path, team_name="AI_Agents"):
     
 if __name__ == "__main__":
     solve_gauntlet("gauntlet.pdf", team_name="Antigravity_Solver")
+
+# JSON exporter active
