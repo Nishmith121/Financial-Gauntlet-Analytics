@@ -18,3 +18,23 @@ class ReportInsights(BaseModel):
     chart_values: List[float]
 
 def generate_report(validation_report: dict, raw_text: str, overall_reasoning: str = "") -> str:
+    """
+    Generates structured AI insights analyzing the math anomalies and raw text.
+    """
+    # Pass the full document text — no truncation — for 100+ page documents
+    text_chunk = raw_text if raw_text else "No raw text provided."
+
+    system_instruction = (
+        "You are an Expert Data Analyst. Review the chronological log data anomalies "
+        "and corresponding raw text from the system dump. "
+        "Generate a professional analytical report. "
+        "CRITICAL INSTRUCTION: Your 'executive_summary' MUST cite the exact steps in the 'extraction_reasoning' field. Keep it extremely small—exactly ONE short, concise sentence summarizing everything. No fluff. "
+        "Additionally, identify the 'Top 5' most significant numeric data points to visualize (e.g. Highest Invoices, Largest Anomalies, biggest Deltas) and provide a concise 'chart_title', 5 'chart_labels' (strings), and 5 'chart_values' (floats)."
+    )
+    
+    user_prompt = f"""
+    Overall OCR Extraction Reasoning:
+    {overall_reasoning}
+
+    Validation Report Data (includes line-item 'extraction_reasoning'):
+    {json.dumps(validation_report, indent=2)}
