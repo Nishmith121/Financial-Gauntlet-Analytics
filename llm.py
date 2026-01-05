@@ -58,3 +58,15 @@ def generate_report(validation_report: dict, raw_text: str, overall_reasoning: s
         # Returns raw JSON string 
         return response.text
         
+    except Exception as e:
+        # Fallback in case API fails
+        fallback = ReportInsights(
+            executive_summary=f"Failed to generate AI insights due to an API Error: {str(e)}",
+            trend_analysis="N/A",
+            risk_factors=["API failure unable to cross-reference data"],
+            recommended_actions=["Check Gemini API key or quota limits."],
+            chart_title="API Failure - No Data",
+            chart_labels=["Error"],
+            chart_values=[0.0]
+        )
+        return fallback.model_dump_json()
