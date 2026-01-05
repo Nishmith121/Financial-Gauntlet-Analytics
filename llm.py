@@ -70,5 +70,3 @@ def generate_report(validation_report: dict, raw_text: str, overall_reasoning: s
             chart_values=[0.0]
         )
         return fallback.model_dump_json()
-
-# Token limits and exponential backoff handled
