@@ -38,3 +38,23 @@ def generate_report(validation_report: dict, raw_text: str, overall_reasoning: s
 
     Validation Report Data (includes line-item 'extraction_reasoning'):
     {json.dumps(validation_report, indent=2)}
+    
+    Raw Document Text:
+    {text_chunk}
+    """
+
+    try:
+        response = client.models.generate_content(
+            model='gemini-2.5-flash',
+            contents=user_prompt,
+            config=types.GenerateContentConfig(
+                system_instruction=system_instruction,
+                response_mime_type="application/json",
+                response_schema=ReportInsights,
+                temperature=0.2,
+            ),
+        )
+        
+        # Returns raw JSON string 
+        return response.text
+        
