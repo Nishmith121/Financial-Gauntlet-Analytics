@@ -28,3 +28,33 @@ def create_charts(llm_json):
         values = insights.get("chart_values", [])
 
         if labels and values and len(labels) == len(values):
+            # Chart 1: Horizontal Bar
+            fig1, ax1 = plt.subplots(figsize=(8, 4))
+            sns.barplot(x=values, y=labels, ax=ax1, palette="viridis")
+            ax1.set_title(title)
+            fig1.savefig(buf1, format="png", bbox_inches='tight')
+            plt.close(fig1)
+            
+            # Chart 2: Modern Donut Chart
+            fig2, ax2 = plt.subplots(figsize=(8, 4))
+            wedges, texts, autotexts = ax2.pie(values[:5], autopct='%1.1f%%', startangle=90, pctdistance=0.80)
+            centre_circle = plt.Circle((0,0), 0.60, fc='white') # Creates the Donut hole
+            fig2.gca().add_artist(centre_circle)
+            ax2.legend(wedges, labels[:5], title="Items", loc="center left", bbox_to_anchor=(1, 0, 0.5, 1))
+            ax2.set_title(title + " (Distribution)")
+            fig2.savefig(buf2, format="png", bbox_inches='tight')
+            plt.close(fig2)
+        else:
+            return None, None
+            
+    except Exception as e:
+        return None, None
+
+    buf1.seek(0)
+    buf2.seek(0)
+    return buf1, buf2
+
+def create_pdf_report(validation_report, llm_json, output_filename="validated_report.pdf"):
+    pdf = PDFReport()
+    pdf.set_auto_page_break(auto=True, margin=15)
+    
