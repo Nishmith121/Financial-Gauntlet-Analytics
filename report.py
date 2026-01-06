@@ -88,3 +88,28 @@ def create_pdf_report(validation_report, llm_json, output_filename="validated_re
     if b1 and b2:
         # Place charts side-by-side or stacked cleanly
         pdf.image(b1, x=10, y=30, w=190)
+        pdf.image(b2, x=10, y=130, w=190)
+    else:
+        pdf.set_font("helvetica", "", 11)
+        pdf.cell(0, 10, "Not enough numeric data to plot.", new_x="LMARGIN", new_y="NEXT")
+
+    # Page 3: Data Grid Table (Bringing it back!)
+    pdf.add_page()
+    pdf.set_font("helvetica", "B", 14)
+    pdf.cell(0, 10, "3. Extracted Data Grid", new_x="LMARGIN", new_y="NEXT")
+    pdf.ln(5)
+
+    all_logs = validation_report.get("valid_records", []) + validation_report.get("anomalies", [])
+    if all_logs:
+        pdf.set_font("helvetica", "", 8)
+        # Extract headers from the first dictionary keys
+        headers = list(all_logs[0].keys())
+        col_width = 190 / len(headers) if headers else 40
+        
+        # Header Row
+        pdf.set_fill_color(200, 220, 255)
+        for header in headers:
+            pdf.cell(col_width, 8, str(header)[:15], border=1, fill=True, align="C")
+        pdf.ln()
+
+        # Data Rows
