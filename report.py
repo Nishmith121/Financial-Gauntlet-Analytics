@@ -113,3 +113,19 @@ def create_pdf_report(validation_report, llm_json, output_filename="validated_re
         pdf.ln()
 
         # Data Rows
+        for i, row in enumerate(all_logs):
+            fill = (i % 2 == 0)
+            pdf.set_fill_color(245, 245, 245)
+            # Highlight anomalies in light red
+            if "errors" in row:
+                pdf.set_fill_color(255, 200, 200)
+                
+            for key in headers:
+                val = str(row.get(key, ""))[:20]
+                pdf.cell(col_width, 8, val, border=1, fill=fill, align="C")
+            pdf.ln()
+            
+    os.makedirs("uploads", exist_ok=True)
+    filepath = os.path.join("uploads", output_filename)
+    pdf.output(filepath)
+    return filepath
