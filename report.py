@@ -58,3 +58,33 @@ def create_pdf_report(validation_report, llm_json, output_filename="validated_re
     pdf = PDFReport()
     pdf.set_auto_page_break(auto=True, margin=15)
     
+    # Page 1: AI Insights
+    pdf.add_page()
+    pdf.set_font("helvetica", "B", 14)
+    pdf.cell(0, 10, "1. Executive Summary & AI Insights", new_x="LMARGIN", new_y="NEXT")
+    pdf.set_font("helvetica", "", 11)
+    try:
+        insights = json.loads(llm_json)
+        for key in ["executive_summary", "trend_analysis", "risk_factors", "recommended_actions"]:
+            pdf.set_font("helvetica", "B", 12)
+            pdf.cell(0, 8, key.replace("_", " ").title() + ":", new_x="LMARGIN", new_y="NEXT")
+            pdf.set_font("helvetica", "", 10)
+            
+            data = insights.get(key, [])
+            if isinstance(data, list):
+                for item in data:
+                    pdf.multi_cell(0, 5, f"- {item}", new_x="LMARGIN", new_y="NEXT")
+            else:
+                pdf.multi_cell(0, 5, str(data), new_x="LMARGIN", new_y="NEXT")
+            pdf.ln(2)
+    except:
+        pdf.multi_cell(0, 6, "AI Analysis Output Failed.", new_x="LMARGIN", new_y="NEXT")
+
+    # Page 2: Visualizations
+    pdf.add_page()
+    pdf.set_font("helvetica", "B", 14)
+    pdf.cell(0, 10, "2. Data Visualizations", new_x="LMARGIN", new_y="NEXT")
+    b1, b2 = create_charts(llm_json)
+    if b1 and b2:
+        # Place charts side-by-side or stacked cleanly
+        pdf.image(b1, x=10, y=30, w=190)
