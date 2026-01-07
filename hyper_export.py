@@ -28,3 +28,33 @@ def _infer_sql_type(all_data: list, key: str) -> SqlType:
             try:
                 float(str(val).replace(',', ''))
                 has_float = True
+            except ValueError:
+                has_str = True
+
+    if has_str:
+        return SqlType.text()
+    if has_float:
+        return SqlType.double()
+    if has_int:
+        return SqlType.big_int()
+    return SqlType.text()  # safe default for empty columns
+
+
+def create_hyper_extract(validation_report, output_filename="financial_data.hyper"):
+    """
+    Takes the validated financial records (and anomalies) and generates
+    a highly optimized Tableau .hyper database extract.
+    """
+    valid = validation_report.get("valid_records", [])
+    anomalies = validation_report.get("anomalies", [])
+    all_data = valid + anomalies
+
+    if not all_data:
+        return None
+
+    os.makedirs("uploads", exist_ok=True)
+    hyper_filepath = os.path.join("uploads", output_filename)
+
+    with HyperProcess(telemetry=Telemetry.DO_NOT_SEND_USAGE_DATA_TO_TABLEAU) as hyper:
+        with Connection(endpoint=hyper.endpoint,
+                        database=hyper_filepath,
