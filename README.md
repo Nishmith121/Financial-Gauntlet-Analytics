@@ -55,3 +55,6 @@ python -m streamlit run app.py
 ## 🔒 Security Note
 
 **Do not commit your .env file or hardcode API keys.** Always use environment variables.
+## 📄 License
+
+This project is licensed under the MIT License.
