@@ -58,3 +58,42 @@ def create_hyper_extract(validation_report, output_filename="financial_data.hype
     with HyperProcess(telemetry=Telemetry.DO_NOT_SEND_USAGE_DATA_TO_TABLEAU) as hyper:
         with Connection(endpoint=hyper.endpoint,
                         database=hyper_filepath,
+                        create_mode=CreateMode.CREATE_AND_REPLACE) as connection:
+
+            current_keys = list(all_data[0].keys())
+            table_name = TableName("Extract", "Extract")
+
+            # Robust column type inference across ALL rows
+            columns = [
+                TableDefinition.Column(name=key, type=_infer_sql_type(all_data, key))
+                for key in current_keys
+            ]
+
+            extract_table = TableDefinition(table_name=table_name, columns=columns)
+            connection.catalog.create_schema("Extract")
+            connection.catalog.create_table(extract_table)
+
+            with Inserter(connection, extract_table) as inserter:
+                for row in all_data:
+                    row_data = []
+                    for i, key in enumerate(current_keys):
+                        val = row.get(key, None)
+                        col_type = columns[i].type
+                        if val is None or val == "":
+                            row_data.append(None)
+                        elif col_type == SqlType.double():
+                            try:
+                                row_data.append(float(str(val).replace(',', '')))
+                            except Exception:
+                                row_data.append(0.0)
+                        elif col_type == SqlType.big_int():
+                            try:
+                                row_data.append(int(float(str(val).replace(',', ''))))
+                            except Exception:
+                                row_data.append(None)
+                        else:
+                            row_data.append(str(val))
+                    inserter.add_row(row_data)
+                inserter.execute()
+
+    return hyper_filepath
