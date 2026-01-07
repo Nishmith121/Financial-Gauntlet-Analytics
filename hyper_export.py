@@ -97,3 +97,5 @@ def create_hyper_extract(validation_report, output_filename="financial_data.hype
                 inserter.execute()
 
     return hyper_filepath
+
+# Tableau Hyper API exporter active
