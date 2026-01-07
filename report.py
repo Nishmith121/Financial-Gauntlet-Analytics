@@ -129,3 +129,4 @@ def create_pdf_report(validation_report, llm_json, output_filename="validated_re
     filepath = os.path.join("uploads", output_filename)
     pdf.output(filepath)
     return filepath
+# PDF export function active
