@@ -78,3 +78,83 @@ st.markdown("""
     }
     [data-testid="stFileUploaderDropzone"]:hover {
         border-color: #00ffcc !important;
+        background: rgba(0, 255, 204, 0.05);
+        box-shadow: 0 0 15px rgba(0, 255, 204, 0.2) inset;
+    }
+    
+    /* Metric Cards - Hacker Consoles */
+    [data-testid="stMetricValue"] {
+        font-size: 2.5rem !important;
+        font-weight: 700 !important;
+        color: #00ffcc !important;
+        text-shadow: 0 0 8px rgba(0, 255, 204, 0.5);
+    }
+    [data-testid="stMetricLabel"] {
+        font-size: 0.9rem !important;
+        font-weight: 600 !important;
+        color: #9ca3af !important;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    div[data-testid="metric-container"] {
+        background-color: #0a0a0c;
+        border: 1px solid rgba(0, 255, 204, 0.2);
+        border-radius: 4px;
+        padding: 24px;
+        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+        text-align: center;
+        transition: all 0.2s ease;
+    }
+    div[data-testid="metric-container"]:hover {
+        border-color: #00ffcc;
+        box-shadow: 0 0 15px rgba(0, 255, 204, 0.15), inset 0 0 10px rgba(0, 255, 204, 0.05);
+        transform: translateY(-2px);
+    }
+    
+    /* Buttons - Neon Reactor */
+    .stDownloadButton > button, .stButton > button {
+        background: transparent !important;
+        color: #00ffcc !important;
+        border: 1px solid #00ffcc !important;
+        border-radius: 4px !important;
+        padding: 12px 24px !important;
+        font-family: 'Orbitron', sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 1rem !important;
+        width: 100%;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 0 10px rgba(0, 255, 204, 0.1);
+    }
+    .stDownloadButton > button:hover, .stButton > button:hover {
+        background: rgba(0, 255, 204, 0.1) !important;
+        box-shadow: 0 0 20px rgba(0, 255, 204, 0.4), inset 0 0 10px rgba(0, 255, 204, 0.2) !important;
+        text-shadow: 0 0 5px #00ffcc;
+    }
+
+    /* Expander & Alerts - System Warnings */
+    .streamlit-expanderHeader {
+        background-color: #0a0a0c !important;
+        border-radius: 4px !important;
+        color: #00ffcc !important;
+        font-family: 'Orbitron', sans-serif !important;
+        font-weight: 600;
+        border: 1px solid rgba(0, 255, 204, 0.3);
+    }
+    .stAlert {
+        border-radius: 4px !important;
+        border: 1px solid #ff0055;
+        background-color: rgba(255, 0, 85, 0.05) !important;
+        color: #f3f4f6 !important;
+        box-shadow: 0 0 15px rgba(255, 0, 85, 0.1);
+    }
+    
+    hr {
+        border-color: rgba(0, 255, 204, 0.2) !important;
+    }
+    
+    p {
+        color: #9ca3af !important;
+    }
+</style>
