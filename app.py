@@ -238,3 +238,83 @@ if uploaded_file and not run_gauntlet:
     if file_size_mb == 0:
         st.error("Error: Uploaded file is empty (0 bytes).")
         st.stop()
+    elif file_size_mb > 50:
+        st.error(f"Error: File size ({file_size_mb:.2f} MB) exceeds the 50MB limit.")
+        st.stop()
+
+    with st.status("Executing Analytics Pipeline...", expanded=True) as status:
+        st.write("Parsing Document & Extracting Raw Data Matrix...")
+        try:
+            extracted_data = extract_financial_data(uploaded_file)
+            
+            doc_type = extracted_data.get("type", "unknown")
+            if doc_type == "unknown":
+                st.warning("Format Unrecognized: This document does not strictly match standard financial schemas. Proceeding with generic anomaly detection, but manual review is required.", icon="")
+            else:
+                st.success(f"Document Successfully Classified: {doc_type.upper()}", icon="")
+
+            st.write("Running Chronological Math & Anomaly Detection...")
+            validation_report = validate_line_items(extracted_data)
+        except Exception as e:
+            st.error("Fatal Error: The extraction engine encountered a critical failure (e.g., password-protected or corrupted file).")
+            with st.expander("View System Traceback"):
+                st.text(str(e))
+            st.stop()
+        
+        # --- NEW HACKATHON FEATURE: Human-in-the-Loop UI ---
+        if validation_report.get("anomalies"):
+            st.warning("Anomalies Detected! Review and fix the data extracted below to proceed.")
+            # Show interactive grid
+            edited_anomalies = st.data_editor(validation_report["anomalies"], use_container_width=True, key="hitl_editor")
+            
+            # Detect changes and re-validate dynamically
+            if edited_anomalies != validation_report["anomalies"]:
+                clean_edited = [{k: v for k, v in a.items() if k != "errors"} for a in edited_anomalies]
+                clean_valid = [{k: v for k, v in v.items() if k != "errors"} for v in validation_report.get("valid_records", [])]
+                
+                doc_type = validation_report.get("doc_type")
+                if doc_type == "invoice":
+                    headers = list(clean_valid[0].keys()) if clean_valid else list(clean_edited[0].keys())
+                    new_table = [headers]
+                    for rec in clean_valid + clean_edited:
+                        new_table.append([rec.get(h, "") for h in headers])
+                    extracted_data["data"] = [new_table]
+                elif doc_type == "logs":
+                    extracted_data["data"] = clean_valid + clean_edited
+                
+                st.info("Modifications detected. Re-validating payload...")
+                validation_report = validate_line_items(extracted_data)
+                
+                if not validation_report.get("anomalies"):
+                    st.success("Issues Resolved! Continuing pipeline...")
+                else:
+                    st.error("Overcharge or Math Anomalies still present in the edited data.")
+        
+        st.write("Synthesizing Intelligence via Gemini 2.5 Flash...")
+        report_json_str = generate_report(validation_report, extracted_data["text"], extracted_data.get("extraction_reasoning", ""))
+        
+        st.write("Rendering C-Suite PDF Final Report...")
+        pdf_path = create_pdf_report(validation_report, report_json_str)
+        
+        st.write("Generating Tableau Data Extract (.hyper)...")
+        doc_type_fmt = validation_report.get('doc_type', 'unknown').upper()
+        hyper_path = create_hyper_extract(validation_report, output_filename=f"analytics_{doc_type_fmt}.hyper")
+        
+        st.write("Securing Payload via Immutable Audit Hash...")
+        audit_hash = generate_audit_hash(validation_report)
+        st.success(f"Audit Hash Generated: {audit_hash}")
+        
+        status.update(label=f"Pipeline Completed Successfully (Mode: {doc_type_fmt})", state="complete", expanded=False)
+
+    st.markdown("---")
+
+    # --- KPI DASHBOARD ---
+    st.markdown("### Key Performance Indicators")
+    col1, col2, col3 = st.columns(3)
+    tot = len(validation_report.get("valid_records", [])) + len(validation_report.get("anomalies", []))
+    anom = len(validation_report.get("anomalies", []))
+    acc = validation_report.get("accuracy_score", 0.0)
+    
+    col1.metric("Total Records Parsed", f"{tot:,}")
+    col2.metric("Anomalies Detected", anom, delta=f"-{anom}" if anom > 0 else "0", delta_color="inverse")
+    col3.metric("Data Confidence Score", f"{acc * 100:.1f}%")
