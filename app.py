@@ -395,4 +395,3 @@ if uploaded_file and not run_gauntlet:
             file_name=f"Financial_Gauntlet_{doc_type_fmt}_raw.json",
             mime="application/json"
         )
-# Export handlers configured

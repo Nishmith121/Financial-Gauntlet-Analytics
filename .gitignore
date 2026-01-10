@@ -25,3 +25,13 @@ env/
 # OS
 Thumbs.db
 .DS_Store
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Project artifacts (large/generated files)
+*.hyper
+hyperd.log
+immutable_ledger.log
+parsed_data_cache.json
+uploads/
