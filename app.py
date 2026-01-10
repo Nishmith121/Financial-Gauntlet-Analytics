@@ -318,3 +318,80 @@ if uploaded_file and not run_gauntlet:
     col1.metric("Total Records Parsed", f"{tot:,}")
     col2.metric("Anomalies Detected", anom, delta=f"-{anom}" if anom > 0 else "0", delta_color="inverse")
     col3.metric("Data Confidence Score", f"{acc * 100:.1f}%")
+
+    st.markdown("<br>", unsafe_allow_html=True) # Spacer
+
+    # --- MAIN CONTENT LAYOUT ---
+    st.markdown("### 🧬 Deep Analysis")
+    # Split the view: AI Insights on the left, Visuals on the right
+    main_col1, main_col2 = st.columns([1.1, 1.9], gap="large")
+
+    with main_col1:
+        st.markdown("#### AI Executive Summary")
+        try:
+            insights = json.loads(report_json_str)
+            with st.container(border=True):
+                st.info(f"**Brief:** {insights.get('executive_summary', 'No summary available.')}", icon="")
+                st.write(f"**Trend Analysis:** {insights.get('trend_analysis', 'Insufficient data for trends.')}")
+                
+                st.markdown("---")
+                st.error("**Critical Risk Factors**")
+                for risk in insights.get('risk_factors', []):
+                    st.markdown(f"- {risk}")
+                    
+                st.markdown("<br>", unsafe_allow_html=True)
+                
+                st.success("**Recommended Actions**")
+                for action in insights.get('recommended_actions', []):
+                    st.markdown(f"- {action}")
+                    
+        except json.JSONDecodeError:
+            st.warning("Failed to parse Structured AI Analytics output.")
+            with st.expander("View Raw API Response"):
+                st.text(report_json_str)
+
+    with main_col2:
+        st.markdown("#### Visual Telemetry")
+        buf1, buf2 = create_charts(report_json_str)
+        if buf1 and buf2:
+            st.image(buf1, use_container_width=True)
+            st.markdown("<br>", unsafe_allow_html=True) # Spacer
+            st.image(buf2, use_container_width=True)
+        else:
+            st.warning("Insufficient numeric variance to render telemetry charts.", icon="")
+
+    st.markdown("---")
+    
+    # --- FINAL EXPORT ---
+    st.markdown("### Report Export")
+    st.markdown("<p style='color: #8b949e; margin-bottom: 20px;'>Download the mathematically validated PDF report, the core database extract for Tableau, or the raw JSON data.</p>", unsafe_allow_html=True)
+    
+    col_dl1, col_dl2, col_dl3 = st.columns(3)
+    with col_dl1:
+        with open(pdf_path, "rb") as pdf_file:
+            st.download_button(
+                label="Download Validated C-Suite Report (.pdf)",
+                data=pdf_file,
+                file_name=f"Financial_Gauntlet_{doc_type_fmt}.pdf",
+                mime="application/pdf"
+            )
+    with col_dl2:
+        if hyper_path:
+            with open(hyper_path, "rb") as hyper_file:
+                st.download_button(
+                    label="Download Tableau Extract (.hyper)",
+                    data=hyper_file,
+                    file_name=f"Financial_Gauntlet_{doc_type_fmt}.hyper",
+                    mime="application/octet-stream"
+                )
+        else:
+            st.warning("No tabular data generated to extract to Tableau.")
+    with col_dl3:
+        # Provide JSON download of the validated data and anomalies
+        json_str = json.dumps(validation_report, indent=2)
+        st.download_button(
+            label="JSON Download Raw Data (.json)",
+            data=json_str,
+            file_name=f"Financial_Gauntlet_{doc_type_fmt}_raw.json",
+            mime="application/json"
+        )
