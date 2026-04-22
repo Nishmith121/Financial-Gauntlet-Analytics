@@ -1,0 +1,22 @@
+VENDOR MASTER
+Official list of registered vendors. Use this for cross-referencing vendor names, GSTINs, and bank details.
+# Vendor Name GSTIN State Bank IFSC
+1 Tata Consultancy Services Ltd 27DNNPH8645X2Z2 Maharashtra HDFC Bank HDFC08433393
+2 Infosys Ltd 29NVOFQ5021B1Z1 Karnataka ICICI Bank ICIC06799249
+3 Wipro Ltd 33RUNFF9840I2ZX Tamil Nadu State Bank of I SBIN04586110
+4 HCL Technologies Ltd 07KVNCM0180L2ZB Delhi Axis Bank UTIB09581543
+5 Tech Mahindra Ltd 36EHNPM3324Y2ZS Telangana Kotak Mahindra KKBK02020043
+6 HDFC Bank Ltd 24JUQPQ3509F2ZQ Gujarat Punjab National PUNB00230598
+7 ICICI Bank Ltd 27ISTPJ7395K1Z9 Maharashtra Bank of Baroda BARB03660533
+8 Axis Bank Ltd 29QYNHK6736A1Z4 Karnataka Canara Bank CNRB03992832
+9 Kotak Mahindra Bank Ltd 33ZAFAJ5939Q1Z6 Tamil Nadu Union Bank of I UBIN05712539
+10 Larsen & Toubro Ltd 07JJFCT6194X1ZY Delhi IndusInd Bank INDB05864507
+11 Reliance Industries Ltd 27UJEAV7431I2ZQ Maharashtra HDFC Bank HDFC02563534
+12 Mahindra & Mahindra Ltd 29MXIPY2182A1Z3 Karnataka ICICI Bank ICIC09199267
+13 Bajaj Auto Ltd 33MAVHY4357J1ZD Tamil Nadu State Bank of I SBIN08968954
+14 Maruti Suzuki India Ltd 36MOVHL9365E1ZJ Telangana Axis Bank UTIB02281961
+15 Hindustan Unilever Ltd 24VSVHY0580V2ZM Gujarat Kotak Mahindra KKBK08743237
+16 ITC Ltd 19VMDCR2336B2ZQ West Bengal Punjab National PUNB00205095
+17 Britannia Industries Ltd 27XRKAK4454Y1Z4 Maharashtra Bank of Baroda BARB04125247
+18 Godrej Consumer Products Ltd 29XCEPG7671O1ZW Karnataka Canara Bank CNRB09690062
+Page 3 VENDOR-MASTER

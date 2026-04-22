@@ -1,0 +1,20 @@
+VENDOR MASTER (Continued)
+# Vendor Name GSTIN State Bank IFSC
+19 Dabur India Ltd 27REGAG5326F2ZF Maharashtra Union Bank of I UBIN07846634
+20 Marico Ltd 33HNZHX1406Y1Z6 Tamil Nadu IndusInd Bank INDB02421605
+21 Siemens Ltd 07STKHF8213R2ZN Delhi HDFC Bank HDFC04137838
+22 ABB India Ltd 29ZTNPN5383Z1Z9 Karnataka ICICI Bank ICIC04391535
+23 Bosch Ltd 27WIEPL2499R2ZI Maharashtra State Bank of I SBIN04300162
+24 Cummins India Ltd 36GVNAN2524N2ZN Telangana Axis Bank UTIB06015679
+25 Bharat Electronics Ltd 24KBAHR9713I2ZT Gujarat Kotak Mahindra KKBK09951656
+26 Mphasis Ltd 27YKDAF6709N2Z2 Maharashtra Punjab National PUNB02751376
+27 Mindtree Ltd 29UDDAI6354G1ZL Karnataka Bank of Baroda BARB09593974
+28 L&T Infotech Ltd 33CFFAA0308D2Z5 Tamil Nadu Canara Bank CNRB05466068
+29 Coforge Ltd 07YGGCU2946D1Z7 Delhi Union Bank of I UBIN07334444
+30 Persistent Systems Ltd 27ESFHT4802X2ZF Maharashtra IndusInd Bank INDB03543062
+31 Zensar Technologies Ltd 29DUKCM9645A1ZE Karnataka HDFC Bank HDFC00009407
+32 Cyient Ltd 33GGBHA6001G2ZF Tamil Nadu ICICI Bank ICIC00814501
+33 KPIT Technologies Ltd 36PXZPV4835K1Z1 Telangana State Bank of I SBIN08193427
+34 Tata Elxsi Ltd 24YSICA7112O1ZX Gujarat Axis Bank UTIB06423458
+35 Happiest Minds Technologies Lt 27EEYFB4015Y2ZV Maharashtra Kotak Mahindra KKBK03087179
+Page 4 VENDOR-MASTER

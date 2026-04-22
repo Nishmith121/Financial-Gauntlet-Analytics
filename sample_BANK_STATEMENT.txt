@@ -1,0 +1,47 @@
+=== BANK_STATEMENT PAGE 834 ===
+BANK STATEMENT
+Statement ID: BS-2025-00001
+Account: HyperAPI Technologies Pvt Ltd - Account 1
+Account No: 873210365559
+Bank: HDFC Bank
+IFSC: HDFC00620419
+Period: 01/01/2025 to 31/01/2025
+Opening Balance: n5,23,884.40
+TRANSACTIONS
+Date Description Type Ref Debit Credit Balance
+01/01/2025 Receipt from Reliance Industri CASH CASH934156 - n84,385.36 n6,08,269.76
+02/01/2025 Payment to Dabur India Ltd CHQ CHQ207314 n1,690.04 - n6,06,579.72
+03/01/2025 Payment to Persistent Systems CHQ CHQ789867 n1,55,101.18 - n4,51,478.54
+06/01/2025 Receipt from Larsen & Toubro L NEFT NEFT206193 - n51,357.66 n5,02,836.20
+08/01/2025 Receipt from HDFC Bank Ltd NEFT NEFT681581 - n1,30,715.68 n6,33,551.88
+12/01/2025 Receipt from Cummins India Ltd RTGS RTGS148767 - n61,750.96 n6,95,302.84
+12/01/2025 Payment to Happiest Minds Tech IMPS IMPS906432 n1,63,349.80 - n5,31,953.04
+13/01/2025 Payment to Britannia Industrie UPI UPI442231 n1,62,692.53 - n3,69,260.51
+15/01/2025 Receipt from Marico Ltd EMI/LOANEMI/LOAN6660 - n1,43,132.33 n5,12,392.84
+15/01/2025 Payment to Bosch Ltd CASH CASH878542 n1,67,504.07 - n3,44,888.77
+16/01/2025 Payment to KPIT Technologies L RTGS RTGS233155 n1,79,477.42 - n1,65,411.35
+17/01/2025 Payment to Mahindra & Mahindra CHQ CHQ222152 n1,73,972.54 - -n8,561.19
+19/01/2025 Receipt from Persistent System CASH CASH526881 - n55,544.84 n46,983.65
+20/01/2025 Payment to Infosys Ltd CHQ CHQ224469 n40,729.48 - n6,254.17
+20/01/2025 Receipt from Reliance Industri EMI/LOANEMI/LOAN7789 - n1,30,488.92 n1,36,743.09
+21/01/2025 Payment to Cummins India Ltd RTGS RTGS326118 n1,41,408.18 - -n4,665.09
+23/01/2025 Receipt from Zensar Technologi CHQ CHQ269245 - n1,56,528.29 n1,51,863.20
+24/01/2025 Payment to Wipro Ltd IMPS IMPS509052 n1,28,879.58 - n22,983.62
+25/01/2025 Receipt from ABB India Ltd CASH CASH662544 - n1,59,286.76 n1,82,270.38
+25/01/2025 Payment to Happiest Minds Tech IMPS IMPS903813 n33,273.00 - n1,48,997.38
+Place of supply is determined as per Section 10 of the Integrated Goods and Services Tax Act, 2017 (IGST Act). HSN/SAC codes mentioned in this document are as per the latest GST
+tariff notification. The classification of goods and services is based on the Harmonized System of Nomenclature adopted by India.
+Disclaimer: The information contained in this document is confidential and intended solely for the addressee. If you have received this document in error, please notify the sender
+immediately and destroy all copies. Any unauthorized use, disclosure, or distribution of this document is strictly prohibited.
+This document forms part of the accounts payable processing bundle maintained by HyperAPI Technologies Private Limited for the financial year 2025-2026. All amounts are stated in
+Indian Rupees (INR) unless otherwise specified. Foreign currency transactions are converted at the prevailing exchange rate on the date of the transaction as published by the Reserve
+Bank of India.
+Page 834 BS-2025-00001
+
+--- Tables ---
+['Date', 'Description', 'Type', 'Ref', 'Debit', 'Credit', 'Balance']
+['01/01/2025', 'Receipt from Reliance Industri', 'CASH', 'CASH934156', '-', 'n84,385.36', 'n6,08,269.76']
+['02/01/2025', 'Payment to Dabur India Ltd', 'CHQ', 'CHQ207314', 'n1,690.04', '-', 'n6,06,579.72']
+['03/01/2025', 'Payment to Persistent Systems', 'CHQ', 'CHQ789867', 'n1,55,101.18', '-', 'n4,51,478.54']
+['06/01/2025', 'Receipt from Larsen & Toubro L', 'NEFT', 'NEFT206193', '-', 'n51,357.66', 'n5,02,836.20']
+...

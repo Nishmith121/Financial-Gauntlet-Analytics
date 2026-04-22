@@ -1,0 +1,161 @@
+﻿=== PAGE 5 (3195 chars) ===
+TAX INVOICE
+Invoice No: INV-2025-00015
+Date: 12/07/2025
+VENDOR DETAILS
+Name: Maruti Suzuki India Ltd
+GSTIN: 36MOVHL9365E1ZJ
+PAN: MOVHL9365E
+Address: Whitefield Main Road, Chennai, Telangana - 577588
+BILL TO
+Name: HyperAPI Technologies Pvt Ltd
+GSTIN: 36AADCH1234M1Z5
+Address: 4th Floor, Tower A, Mindspace IT Park, Hyderabad, Telangana - 500081
+LINE ITEMS
+# Description HSN Qty Unit Rate Amount
+1 Prof
+
+=== PAGE 6 (3298 chars) ===
+TAX INVOICE (Continued)
+Invoice No: INV-2025-00015
+Date: 12/07/2025
+LINE ITEMS
+# Description HSN Qty Unit Rate Amount
+6 ERP Implementation - Module Configuratio 48201010 19.68 Days n7,886.63 n1,55,208.88
+7 Quality Assurance Testing Services 998314 24.24 Pcs n3,463.00 n83,943.12
+Subtotal: n9,00,279.52
+CGST: n66,207.07
+SGST: n66,207.07
+GRAND TOTAL: n10,32,693.67
+BANK DETAILS FOR PAYMENT
+Bank: Axis B
+
+=== PAGE 7 (3039 chars) ===
+TAX INVOICE
+Invoice No: INV-2025-00097
+Date: 05/12/2025
+PO Reference: PO-2025-00024
+VENDOR DETAILS
+Name: Dabur India Ltd
+GSTIN: 27REGAG5326F2ZF
+PAN: REGAG5326F
+Address: Noida Sector 63, Jaipur, Maharashtra - 437198
+BILL TO
+Name: HyperAPI Technologies Pvt Ltd
+GSTIN: 36AADCH1234M1Z5
+Address: 4th Floor, Tower A, Mindspace IT Park, Hyderabad, Telangana - 500081
+LINE ITEMS
+# Description HSN Qty Unit Ra
+
+=== PAGE 11 (2527 chars) ===
+TAX INVOICE
+Invoice No: INV-2025-00146
+Date: 03/05/2025
+PO Reference: PO-2025-00034
+VENDOR DETAILS
+Name: KPIT Technologies Ltd
+GSTIN: 36PXZPV4835K1Z1
+PAN: PXZPV4835K
+Address: Ambattur Industrial Estate, Bangalore, Telangana - 592334
+BILL TO
+Name: HyperAPI Technologies Pvt Ltd
+GSTIN: 36AADCH1234M1Z5
+Address: 4th Floor, Tower A, Mindspace IT Park, Hyderabad, Telangana - 500081
+LINE ITEMS
+# Descripti
+
+=== PAGE 21 (3019 chars) ===
+TAX INVOICE
+Invoice No: INV-2025-00037
+Date: 27/11/2025
+VENDOR DETAILS
+Name: Marico Ltd
+GSTIN: 33HNZHX1406Y1Z6
+PAN: HNZHX1406Y
+Address: Gachibowli Financial District, Lucknow, Tamil Nadu - 611634
+BILL TO
+Name: HyperAPI Technologies Pvt Ltd
+GSTIN: 36AADCH1234M1Z5
+Address: 4th Floor, Tower A, Mindspace IT Park, Hyderabad, Telangana - 500081
+LINE ITEMS
+# Description HSN Qty Unit Rate Amount
+1 Quality
+
+=== PAGE 51 (2691 chars) ===
+TAX INVOICE
+Invoice No: INV-2025-00030
+Date: 31/09/2025
+VENDOR DETAILS
+Name: Tata Consultancy Services Ltd
+GSTIN: 27DNNPH8645X2Z2
+PAN: DNNPH8645X
+Address: Plot No. 12, Andheri East, Mumbai, Maharashtra - 400200
+BILL TO
+Name: HyperAPI Technologies Pvt Ltd
+GSTIN: 36AADCH1234M1Z5
+Address: 4th Floor, Tower A, Mindspace IT Park, Hyderabad, Telangana - 500081
+LINE ITEMS
+# Description HSN Qty Unit Rate A
+
+=== PAGE 101 (2405 chars) ===
+TAX INVOICE
+Invoice No: INV-2025-00089
+Date: 12/02/2025
+PO Reference: PO-2025-00022
+VENDOR DETAILS
+Name: Tata Elxsi Ltd
+GSTIN: 24YSICA7112O1ZX
+PAN: YSICA7112O
+Address: MIDC Andheri, Chennai, Gujarat - 338655
+BILL TO
+Name: HyperAPI Technologies Pvt Ltd
+GSTIN: 36AADCH1234M1Z5
+Address: 4th Floor, Tower A, Mindspace IT Park, Hyderabad, Telangana - 500081
+LINE ITEMS
+# Description HSN Qty Unit Rate Amou
+
+=== PAGE 201 (3331 chars) ===
+TAX INVOICE (Continued)
+Invoice No: INV-2025-00260
+Date: 24/06/2025
+LINE ITEMS
+# Description HSN Qty Unit Rate Amount
+6 Network Security Assessment 996331 3.36 Lots n4,665.77 n15,676.99
+7 Catering Services - Corporate Events 997212 17.81 Days n20,210.37 n3,59,946.69
+Subtotal: n22,27,657.34
+CGST: n1,62,057.40
+SGST: n1,62,057.40
+GRAND TOTAL: n25,51,772.14
+BANK DETAILS FOR PAYMENT
+Bank: Bank of Barod
+
+=== PAGE 501 (2961 chars) ===
+PURCHASE ORDER
+PO Number: PO-2025-00051
+Date: 23/07/2025
+Delivery Date: 05/09/2025
+Payment Terms: 50% advance, 50% on delivery
+VENDOR
+Name: Mindtree Ltd
+GSTIN: 29UDDAI6354G1ZL
+SHIP TO
+Address: HyperAPI Technologies Pvt Ltd, 4th Floor, Tower A, Mindspace IT Park, Hyderabad, Telangana - 500081
+ORDER ITEMS
+# Description HSN Qty Unit Rate Amount
+1 Cloud Migration Consulting - Phase 1 998412 400 Hrs n1
+
+=== PAGE 1000 (2901 chars) ===
+EXPENSE REPORT
+Report ID: EXP-2025-00062
+Date: 09/12/2025
+Employee: Swati Kulkarni
+Employee ID: EMP-1005
+Department: Legal
+Purpose: Training Program
+City: Bangalore
+EXPENSE ENTRIES
+# Date Category Description City Amount
+1 09/12/2025 Training Fee Training Fee - Mumbai Mumbai n10,985.73
+2 23/12/2025 Professional Membe Professional Membership - Ch Chennai n5,036.63
+3 10/12/2025 Meals & Entertainm Me
+

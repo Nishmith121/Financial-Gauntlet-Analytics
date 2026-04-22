@@ -1,0 +1,12 @@
+streamlit
+openai
+pdfplumber
+pytesseract
+pillow
+tableauhyperapi
+google-genai
+pydantic
+matplotlib
+seaborn
+fpdf2
+python-dotenv
